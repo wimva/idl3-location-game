@@ -89,7 +89,7 @@ function onChange() {
         pointerElement.style.transform = `rotate(${direction}deg)`;
       } else {
         document.querySelector('#log').textContent = compass;
-        pointerElement.style.transform = `rotate(${-compass}deg)`;
+        pointerElement.style.transform = `scale(-1, 1) rotate(${-compass}deg)`;
       }
     }
   }
