@@ -89,7 +89,7 @@ function onChange() {
       if (compass === null) {
         pointerElement.style.transform = `rotate(${direction}deg)`;
       } else {
-        document.querySelector('#log').textContent = compass;
+        document.querySelector('#log').textContent = 'compass: ' + Math.round(compass) + ' / direction: ' + direction;
 
         pointerElement.style.transform = `rotate(${compass + direction}deg)`;
       }
