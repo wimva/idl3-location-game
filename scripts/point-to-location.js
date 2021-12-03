@@ -88,7 +88,7 @@ function onChange() {
       if (compass === null) {
         pointerElement.style.transform = `rotate(${direction}deg)`;
       } else {
-        pointerElement.style.transform = `rotate(${compass}deg)`;
+        pointerElement.style.transform = `translate(-50%, -50%) rotate(${compass}deg)`;
       }
     }
   }
