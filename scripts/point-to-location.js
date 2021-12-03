@@ -75,7 +75,8 @@ function startCompass() {
 }
 
 function handler(e) {
-  compass = e.webkitCompassHeading || Math.abs(e.alpha - 360);
+  compass = (e.webkitCompassHeading || Math.abs(e.alpha - 360)) - 180;
+  if (compass < 0) compass += 360;
   onChange();
 }
 
@@ -88,7 +89,8 @@ function onChange() {
       if (compass === null) {
         pointerElement.style.transform = `rotate(${direction}deg)`;
       } else {
-        pointerElement.style.transform = `translate(-50%, -50%) rotate(${compass}deg)`;
+        document.querySelector('#log').textContent = compass;
+        pointerElement.style.transform = `rotate(${compass}deg)`;
       }
     }
   }
