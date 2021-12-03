@@ -34,23 +34,43 @@ navigator.geolocation.watchPosition(success, error, options);
 
 /* Source: https://dev.to/orkhanjafarovr/real-compass-on-mobile-browsers-with-javascript-3emi */
 const isIOS = navigator.userAgent.match(/(iPod|iPhone|iPad)/) && navigator.userAgent.match(/AppleWebKit/);
+let compassStarted = false;
+let compassStartedViaClick = false;
 let compass = null;
 let direction = null;
-let element = null;
+let pointerElement = null;
+let requestPermissionsButtonElement = null;
+let showRequestPermissions = null;
+let hideRequestPermissions = null;
 
 function startCompass() {
-  if (!isIOS) {
-    window.addEventListener("deviceorientationabsolute", handler, true);
-  } else {
-    DeviceOrientationEvent.requestPermission()
-      .then((response) => {
-        if (response === "granted") {
-          window.addEventListener("deviceorientation", handler, true);
-        } else {
-          alert("has to be allowed!");
-        }
-      })
-      .catch(() => alert("not supported"));
+  if (!compassStarted) {
+    compassStarted = true;
+    if (!isIOS) {
+      window.addEventListener("deviceorientationabsolute", handler, true);
+    } else {
+      DeviceOrientationEvent.requestPermission()
+        .then((response) => {
+          if (response === "granted") {
+            window.addEventListener("deviceorientation", handler, true);
+          } else {
+            alert("has to be allowed!");
+          }
+        })
+        .catch(() => {
+          if (compassStartedViaClick) {
+            alert("Kompas niet beschikbaar. Richtingaanwijzing via het noorden.")
+          } else {
+            showRequestPermissions();
+            requestPermissionsButtonElement.onclick = () => {
+              compassStartedViaClick = true;
+              compassStarted = false;
+              hideRequestPermissions();
+              startCompass();
+            }
+          }
+        });
+    }
   }
 }
 
@@ -60,24 +80,29 @@ function handler(e) {
 }
 
 function onChange() {
-  if (element !== null) {
+  if (pointerElement !== null) {
     if (direction === null) {
-      element.style.visibility = 'hidden';
+      pointerElement.style.visibility = 'hidden';
     } else {
-      element.style.visibility = 'visible';
+      pointerElement.style.visibility = 'visible';
       if (compass === null) {
-        element.style.transform = `rotate(${direction}deg)`;
+        pointerElement.style.transform = `rotate(${direction}deg)`;
       } else {
-        element.style.transform = `rotate(${compass}deg)`;
+        pointerElement.style.transform = `rotate(${compass}deg)`;
       }
     }
   }
 }
 
 function pointToLocation(lat1, lon1, lat2, lon2, pointerSelector, requestPermissionsButtonSelector, onShowRequestPermissions, onHideRequestPermissions) {
-  element = document.querySelector(pointerSelector);
+  showRequestPermissions = onShowRequestPermissions;
+  hideRequestPermissions = onHideRequestPermissions;
+
+  requestPermissionsButtonElement = document.querySelector(requestPermissionsButtonSelector);
+  pointerElement = document.querySelector(pointerSelector);
+
   direction = getDistance(lat1, lon1, lat2, lon2).directionInDegrees;
+
+  startCompass();
   onChange();
 }
-
-startCompass();
