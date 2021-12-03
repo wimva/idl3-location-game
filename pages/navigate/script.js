@@ -29,6 +29,9 @@ function success(position) {
   // laat die afstand zien
   distanceElement.innerText = distance;
 
+  // toon pijl die richting aangeeft
+  pointToLocation(position.coords.latitude, position.coords.longitude, coordinates.latitude, coordinates.longitude, '#point-to-location');
+
   // de afstand tussen mijn locatie en die van mijn doel is minder dan 20 meter?
   if (distance < successRadiusInMeter) {
     // navigeer naar de pagina die getoond moet worden als ik in 20 meter van locatie ben
