@@ -74,8 +74,8 @@ function onChange() {
   }
 }
 
-function pointToLocation(lat1, lon1, lat2, lon2, selector) {
-  element = document.querySelector(selector);
+function pointToLocation(lat1, lon1, lat2, lon2, pointerSelector, requestPermissionsButtonSelector, onShowRequestPermissions, onHideRequestPermissions) {
+  element = document.querySelector(pointerSelector);
   direction = getDistance(lat1, lon1, lat2, lon2).directionInDegrees;
   onChange();
 }

@@ -22,6 +22,17 @@ localStorage.setItem('coordinates', coordinatesParam);
 localStorage.setItem('locationName', locationName);
 localStorage.setItem('nextPage', nextPage);
 
+// show/ hide request permissions div
+const requestPermissionsElement = document.querySelector('#request-permissions')
+function onShowRequestPermissions() {
+  requestPermissionsElement.style.display = 'block';
+}
+
+function onHideRequestPermissions() {
+  requestPermissionsElement.style.display = 'none';
+}
+onHideRequestPermissions();
+
 // deze functie wordt opgeroepen elke keer een nieuwe locatie doorkomt
 function success(position) {
   // bereken afstand tussen mijn locatie en die van mijn doel
@@ -30,7 +41,7 @@ function success(position) {
   distanceElement.innerText = distance;
 
   // toon pijl die richting aangeeft
-  pointToLocation(position.coords.latitude, position.coords.longitude, coordinates.latitude, coordinates.longitude, '#point-to-location');
+  pointToLocation(position.coords.latitude, position.coords.longitude, coordinates.latitude, coordinates.longitude, '#point-to-location', '#request-permissions-button', onShowRequestPermissions, onHideRequestPermissions);
 
   // de afstand tussen mijn locatie en die van mijn doel is minder dan 20 meter?
   if (distance < successRadiusInMeter) {
