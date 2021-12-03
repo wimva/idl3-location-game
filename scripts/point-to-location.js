@@ -91,7 +91,7 @@ function onChange() {
       } else {
         document.querySelector('#log').textContent = compass;
 
-        pointerElement.style.transform = `rotate(${compass}deg)`;
+        pointerElement.style.transform = `rotate(${compass + direction}deg)`;
       }
     }
   }
