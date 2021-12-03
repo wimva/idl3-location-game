@@ -75,8 +75,7 @@ function startCompass() {
 }
 
 function handler(e) {
-  compass = (e.webkitCompassHeading || Math.abs(e.alpha - 360)) - 180;
-  if (compass < 0) compass += 360;
+  compass = e.webkitCompassHeading || Math.abs(e.alpha - 360);
   onChange();
 }
 
