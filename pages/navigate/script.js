@@ -36,8 +36,8 @@ onHideRequestPermissions();
 // deze functie wordt opgeroepen elke keer een nieuwe locatie doorkomt
 function success(position) {
 
-  coordinates.latitude = 51.198479;
-  coordinates.longitude = 4.484319;
+  coordinates.latitude = 51.199936;
+  coordinates.longitude = 4.483225;
 
   // bereken afstand tussen mijn locatie en die van mijn doel
   const distance = getDistance(position.coords.latitude, position.coords.longitude, coordinates.latitude, coordinates.longitude).distance;
