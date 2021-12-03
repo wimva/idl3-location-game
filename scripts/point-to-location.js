@@ -33,6 +33,7 @@ navigator.geolocation.watchPosition(success, error, options);
 */
 
 /* Source: https://dev.to/orkhanjafarovr/real-compass-on-mobile-browsers-with-javascript-3emi */
+
 const isIOS = navigator.userAgent.match(/(iPod|iPhone|iPad)/) && navigator.userAgent.match(/AppleWebKit/);
 let compassStarted = false;
 let compassStartedViaClick = false;
@@ -54,7 +55,7 @@ function startCompass() {
           if (response === "granted") {
             window.addEventListener("deviceorientation", handler, true);
           } else {
-            alert("has to be allowed!");
+            alert("Zonder kompas wordt het lastig. Richtingaanwijzing via het noorden.");
           }
         })
         .catch(() => {
@@ -89,8 +90,6 @@ function onChange() {
       if (compass === null) {
         pointerElement.style.transform = `rotate(${direction}deg)`;
       } else {
-        document.querySelector('#log').textContent = 'compass: ' + Math.round(compass) + ' / direction: ' + direction;
-
         pointerElement.style.transform = `rotate(${compass + direction}deg)`;
       }
     }
