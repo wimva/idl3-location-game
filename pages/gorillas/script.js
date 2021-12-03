@@ -1,8 +1,8 @@
 const continueButton = document.querySelector('#continue-button');
 
 continueButton.onclick = () => {
-  const coordinates = '51.197837,4.463655'
-  const locationName = 'Boekenbergpark';
-  const nextPage = 'stop2';
+  const coordinates = '51.228229,4.405548'
+  const locationName = 'Mas';
+  const nextPage = 'mas';
   location.assign(`../navigate/index.html?coordinates=${coordinates}&locationName=${locationName}&nextPage=${nextPage}`)
 }
