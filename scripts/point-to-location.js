@@ -71,6 +71,7 @@ let pointerElement = null;
 let requestPermissionsButtonElement = null;
 let showRequestPermissions = null;
 let hideRequestPermissions = null;
+let compasChange = null;
 
 function startCompass() {
   if (!compassStarted) {
@@ -105,6 +106,7 @@ function startCompass() {
 
 function handler(e) {
   compass = e.webkitCompassHeading || Math.abs(e.alpha - 360);
+  if (compasChange) compasChange(compass);
   compass = -compass;
   onChange();
 }
@@ -124,9 +126,10 @@ function onChange() {
   }
 }
 
-function pointToLocation(lat1, lon1, lat2, lon2, pointerSelector, requestPermissionsButtonSelector, onShowRequestPermissions, onHideRequestPermissions) {
+function pointToLocation(lat1, lon1, lat2, lon2, pointerSelector, requestPermissionsButtonSelector, onShowRequestPermissions, onHideRequestPermissions, onCompasChange) {
   showRequestPermissions = onShowRequestPermissions;
   hideRequestPermissions = onHideRequestPermissions;
+  compasChange = onCompasChange;
 
   requestPermissionsButtonElement = document.querySelector(requestPermissionsButtonSelector);
   pointerElement = document.querySelector(pointerSelector);

@@ -33,8 +33,27 @@ function onHideRequestPermissions() {
 }
 onHideRequestPermissions();
 
+// create map
+let map = null;
+
+// when compass changes
+function onCompasChange(compass) {
+  if (map) {
+    map.easeTo({bearing: compass, duration: 100});
+  }
+}
+
 // deze functie wordt opgeroepen elke keer een nieuwe locatie doorkomt
 function success(position) {
+
+  // create map
+  if (map === null) {
+    map = createMap("map", position.coords.latitude, position.coords.longitude, 15, 'mapbox://styles/mapbox/streets-v11');
+
+  // fly to current position
+  } else {
+    map.flyTo({ center: [position.coords.longitude, position.coords.latitude] });
+  }
 
   // bereken afstand tussen mijn locatie en die van mijn doel
   const distance = getDistance(position.coords.latitude, position.coords.longitude, coordinates.latitude, coordinates.longitude).distance;
@@ -42,7 +61,7 @@ function success(position) {
   distanceElement.innerText = distance;
 
   // toon pijl die richting aangeeft
-  pointToLocation(position.coords.latitude, position.coords.longitude, coordinates.latitude, coordinates.longitude, '#point-to-location', '#request-permissions-button', onShowRequestPermissions, onHideRequestPermissions);
+  pointToLocation(position.coords.latitude, position.coords.longitude, coordinates.latitude, coordinates.longitude, '#point-to-location', '#request-permissions-button', onShowRequestPermissions, onHideRequestPermissions, onCompasChange);
 
   // de afstand tussen mijn locatie en die van mijn doel is minder dan 20 meter?
   if (distance < successRadiusInMeter) {

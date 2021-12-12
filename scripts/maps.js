@@ -53,7 +53,8 @@ function createMap(myID, lat, lng, zoom, styled) {
       container: myID,
       style: styled,
       center: [startCoordinates.lng, startCoordinates.lat],
-      zoom: zoom
+      zoom: zoom,
+      interactive: false,
     });
 
     return map;

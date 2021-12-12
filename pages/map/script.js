@@ -1,2 +1,0 @@
-const myMap = createMap("mapper", 51.219608, 4.411694, 15, 'mapbox://styles/mapbox/streets-v11');
-createMarker(myMap, 'markerID1', 20, 30, "https://driesvannoten-la.com/img/pin.svg",51.219608, 4.411694, false);

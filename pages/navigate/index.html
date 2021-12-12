@@ -11,8 +11,12 @@
     <link href="../../styles/general.css" type="text/css" rel="stylesheet">
     <link href="../../styles/components/button.css" type="text/css" rel="stylesheet">
     <link href="style.css" type="text/css" rel="stylesheet">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css" rel="stylesheet">
 
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js"></script>
+    <script defer src="../../scripts/secrets.js"></script>
     <script defer src="../../scripts/get-distance.js"></script>
+    <script defer src="../../scripts/maps.js"></script>
     <script defer src="../../scripts/point-to-location.js"></script>
     <script defer src="../../scripts/get-query-param.js"></script>
     <script defer src="../../scripts/is-in-iframe.js"></script>
@@ -29,6 +33,8 @@
       Mogen we je kompas gebruiken om je naar de juiste locatie te gidsen?
       <button id="request-permissions-button">Geef goedkeuring</button>
     </div>
+
+    <div id="map"></div>
 
   </body>
 </html>
