@@ -1,0 +1,12 @@
+.volume-meter {
+  display: flex;
+}
+
+.volume-meter-bar {
+  background-color: var(--button-color);
+  width: 0.25rem;
+  height: 1rem;
+  border-radius: 0.125rem;
+  margin: 0.125rem;
+  transform-origin: 50% 50%;
+}
