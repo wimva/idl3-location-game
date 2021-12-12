@@ -1,9 +1,20 @@
 // neem html elementen vast
 const locationNameElement = document.querySelector('#location-name');
 const distanceElement = document.querySelector('#distance');
+const bananaPhaseElement = document.querySelector('#banana');
 
 // definieer radius waarbinnen doelen gevonden mogen worden
 const successRadiusInMeter = 20;
+
+// banana definitions
+const bananaPositions = [
+  {latitude: 51.218381, longitude: 4.412834}, // Meir vs Jezusstraat
+  {latitude: 51.217595, longitude: 4.419040}, // Wasbar Keyserlei
+];
+const bananaPhase1 = 30;
+const bananaPhase2 = 20;
+const bananaPhase3 = 10;
+const bananaPhase4 = 5;
 
 // haal alle query parameters op
 const coordinatesParam = getQueryParam('coordinates').split(',');
@@ -13,7 +24,7 @@ const coordinates = {
 }
 
 const locationName = getQueryParam('locationName');
-locationNameElement.innerText = locationName;
+locationNameElement.textContent = locationName;
 
 const nextPage = getQueryParam('nextPage');
 
@@ -58,7 +69,7 @@ function success(position) {
   // bereken afstand tussen mijn locatie en die van mijn doel
   const distance = getDistance(position.coords.latitude, position.coords.longitude, coordinates.latitude, coordinates.longitude).distance;
   // laat die afstand zien
-  distanceElement.innerText = distance;
+  distanceElement.textContent = distance;
 
   // toon pijl die richting aangeeft
   pointToLocation(position.coords.latitude, position.coords.longitude, coordinates.latitude, coordinates.longitude, '#point-to-location', '#request-permissions-button', onShowRequestPermissions, onHideRequestPermissions, onCompasChange);
@@ -68,6 +79,22 @@ function success(position) {
     // navigeer naar de pagina die getoond moet worden als ik in 20 meter van locatie ben
     location.assign(`../${nextPage}/index.html`)
   }
+
+  // banana detector
+  let bananaPhase = null;
+  bananaPositions.forEach(banana => {
+    const bananaDistance = getDistance(position.coords.latitude, position.coords.longitude, banana.latitude, banana.longitude).distance;
+    if (bananaDistance <= bananaPhase4) {
+      bananaPhase = 4;
+    } else if (bananaDistance <= bananaPhase3) {
+      bananaPhase = 3;
+    } else if (bananaDistance <= bananaPhase2) {
+      bananaPhase = 2;
+    } else if (bananaDistance <= bananaPhase1) {
+      bananaPhase = 1;
+    }
+  });
+  bananaPhaseElement.textContent = bananaPhase;
 }
 
 function error(err) {
