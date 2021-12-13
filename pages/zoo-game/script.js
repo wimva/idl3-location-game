@@ -1,43 +1,18 @@
 const audioVolumeArray = [5, 5, 5, 5, 5, 5, 5, 5, 5, 5];
 let now = new Date().getTime();
 
-navigator.mediaDevices.getUserMedia({ audio: true, video: false })
-.then(function(stream) {
-  audioContext = new AudioContext();
-  analyser = audioContext.createAnalyser();
-  microphone = audioContext.createMediaStreamSource(stream);
-  javascriptNode = audioContext.createScriptProcessor(2048, 1, 1);
+function microphoneSuccess(volume) {
+  const newNow = new Date().getTime();
+  if (newNow > now + 20) {
+    now = newNow;
+    audioVolumeArray.unshift(Math.round(volume));
+    audioVolumeArray.pop();
 
-  analyser.smoothingTimeConstant = 0.8;
-  analyser.fftSize = 1024;
-
-  microphone.connect(analyser);
-  analyser.connect(javascriptNode);
-  javascriptNode.connect(audioContext.destination);
-  javascriptNode.onaudioprocess = function() {
-    let array = new Uint8Array(analyser.frequencyBinCount);
-    analyser.getByteFrequencyData(array);
-    let values = 0;
-
-    let length = array.length;
-    for (let i = 0; i < length; i++) {
-      values += (array[i]);
-    }
-
-    var average = values / length;
-    const newNow = new Date().getTime();
-    if (newNow > now + 20) {
-      now = newNow;
-      audioVolumeArray.unshift(Math.round(average));
-      audioVolumeArray.pop();
-
-      drawVolume();
-    }
+    drawVolume();
   }
-  })
-  .catch(function(err) {
-    /* handle the error */
-});
+}
+
+getMicrophone(microphoneSuccess);
 
 function drawVolume() {
   audioVolumeArray.forEach((volume, i) => {
