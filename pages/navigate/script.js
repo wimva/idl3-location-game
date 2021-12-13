@@ -44,18 +44,32 @@ function onHideRequestPermissions() {
 }
 onHideRequestPermissions();
 
-// create map
+// create map variables
 let map = null;
+let mapCompass = null;
+let mapCenter = null;
 
 // when compass changes
 function onCompasChange(compass) {
+  mapCompass = compass;
+  onMapChange();
+}
+
+// apply changes to map
+function onMapChange() {
   if (map) {
-    map.easeTo({bearing: compass, duration: 100});
+    const goal = {duration: 100};
+
+    if (mapCompass) goal.bearing = compass;
+    if (mapCenter) goal.center = mapCenter;
+
+    map.easeTo(goal);
   }
 }
 
 // deze functie wordt opgeroepen elke keer een nieuwe locatie doorkomt
 function success(position) {
+  mapCenter = [position.coords.longitude, position.coords.latitude];
 
   // create map
   if (map === null) {
@@ -63,7 +77,7 @@ function success(position) {
 
   // fly to current position
   } else {
-    map.flyTo({ center: [position.coords.longitude, position.coords.latitude] });
+    onMapChange();
   }
 
   // bereken afstand tussen mijn locatie en die van mijn doel
