@@ -7,14 +7,39 @@ const bananaPhaseElement = document.querySelector('#banana');
 const successRadiusInMeter = 20;
 
 // banana definitions
+const bananaMax = 7;
 const bananaPositions = [
   {latitude: 51.218381, longitude: 4.412834}, // Meir vs Jezusstraat
-  {latitude: 51.217595, longitude: 4.419040}, // Wasbar Keyserlei
+  {latitude: 51.217518, longitude: 4.418973}, // Wasbar Keyserlei
+  {latitude: 51.218115, longitude: 4.419210}, // Breydelstraat vs Statiestraat
+  {latitude: 51.219287, longitude: 4.418324}, // Rooseveltplaats
+  {latitude: 51.219781, longitude: 4.415434}, // Kipdorp
+  {latitude: 51.219491, longitude: 4.412266}, // Campus LNI
+  {latitude: 51.221262, longitude: 4.412270}, // Speeltuin Frans Halsplein
+  {latitude: 51.220678, longitude: 4.410003}, // Sint Jacobsmarkt
+  {latitude: 51.222744, longitude: 4.410560}, // UA
+  {latitude: 51.221713, longitude: 4.413793}, // Ossenmarkt
+  {latitude: 51.222067, longitude: 4.413956}, // Begijnhof
+  {latitude: 51.225176, longitude: 4.409853}, // Paardenmarkt
+  {latitude: 51.224965, longitude: 4.412349}, // Paardenmarkt
+  {latitude: 51.228235, longitude: 4.409270}, // Haven MAS
+  {latitude: 51.228295, longitude: 4.407833}, // Haven MAS
+  {latitude: 51.227395, longitude: 4.407852}, // FelixArchief
+  {latitude: 51.227121, longitude: 4.405379}, // Oude Leeuwenrui
+  {latitude: 51.229616, longitude: 4.402194}, // Bonapartedok
+  {latitude: 51.230960, longitude: 4.403076}, // Friendship Building
+  {latitude: 51.230248, longitude: 4.404100}, // Nassaustraat
+  {latitude: 51.230694, longitude: 4.405550}, // Cremerie Germaine
+  {latitude: 51.231449, longitude: 4.404206}, // Amsterdamstraat
 ];
-const bananaPhase1 = 30;
-const bananaPhase2 = 20;
+const bananaPhase1 = 20;
+const bananaPhase2 = 15;
 const bananaPhase3 = 10;
 const bananaPhase4 = 5;
+let bananaFound = [];
+if (localStorage.getItem('bananaFound')) {
+  bananaFound = JSON.parse(localStorage.getItem('bananaFound'));
+}
 
 // haal alle query parameters op
 const coordinatesParam = getQueryParam('coordinates').split(',');
@@ -95,22 +120,30 @@ function success(position) {
   }
 
   // banana detector
-  let bananaPhase = null;
-  bananaPositions.forEach(banana => {
-    const bananaDistance = getDistance(position.coords.latitude, position.coords.longitude, banana.latitude, banana.longitude).distance;
-    if (bananaDistance <= bananaPhase4) {
-      bananaPhase = 4;
-    } else if (bananaDistance <= bananaPhase3) {
-      bananaPhase = 3;
-    } else if (bananaDistance <= bananaPhase2) {
-      bananaPhase = 2;
-    } else if (bananaDistance <= bananaPhase1) {
-      bananaPhase = 1;
-    }
-  });
-  bananaPhaseElement.textContent = bananaPhase;
+  let bananaPhase = 0;
+  if (bananaFound.length < bananaMax) {
+    bananaPositions.forEach((banana, index) => {
+      if (bananaFound.indexOf(index) == -1) {
+        const bananaDistance = getDistance(position.coords.latitude, position.coords.longitude, banana.latitude, banana.longitude).distance;
+        if (bananaDistance <= bananaPhase4) {
+          bananaPhase = 4;
+          bananaFound.push(index);
+          localStorage.setItem('bananaFound', JSON.stringify(bananaFound));
+          // TODO banana found action!
+        } else if (bananaDistance <= bananaPhase3) {
+          bananaPhase = 3;
+        } else if (bananaDistance <= bananaPhase2) {
+          bananaPhase = 2;
+        } else if (bananaDistance <= bananaPhase1) {
+          bananaPhase = 1;
+        }
+      }
+    });
+  }
+  bananaPhaseElement.textContent = bananaPhase + ' - ' + bananaFound.length + ' / ' + bananaMax;
 }
 
+// error for GPS
 function error(err) {
   console.warn('ERROR(' + err.code + '): ' + err.message);
 }
