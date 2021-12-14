@@ -48,8 +48,18 @@ const coordinates = {
   latitude: parseFloat(coordinatesParam[0]),
   longitude: parseFloat(coordinatesParam[1]),
 };
+let startCoordinatesParam = getQueryParam('startCoordinates');
+let startCoordinates = null;
+if (startCoordinatesParam && startCoordinatesParam != 'null') {
+  let startCoordinatesArray = startCoordinatesParam.split(',');
+  startCoordinates = {
+    latitude: parseFloat(startCoordinatesArray[0]),
+    longitude: parseFloat(startCoordinatesArray[1]),
+  };
+}
 
 // sla gegevens op in localStorage om later de draad terug op te kunnen pikken
+localStorage.setItem('startCoordinates', startCoordinatesParam);
 localStorage.setItem('coordinates', coordinatesParam);
 localStorage.setItem('locationName', locationName);
 localStorage.setItem('nextPage', nextPage);
@@ -90,9 +100,34 @@ function onMapChange() {
   }
 }
 
+// bereken afstand tussen start en doel
+let totalDistance = 1;
+function calculateTotalDistance() {
+  if (startCoordinatesParam && startCoordinatesParam !== 'null') {
+    totalDistance = getDistance(
+      startCoordinates.latitude,
+      startCoordinates.longitude,
+      coordinates.latitude,
+      coordinates.longitude,
+    ).distance;
+  }
+}
+calculateTotalDistance();
+
 // deze functie wordt opgeroepen elke keer een nieuwe locatie doorkomt
 function success(position) {
   mapCenter = [position.coords.longitude, position.coords.latitude];
+
+  // als startLocatie niet gekend is, sla die coordinaten dan zo op
+  if (!startCoordinatesParam || startCoordinatesParam === 'null') {
+    startCoordinatesParam = `${position.coords.latitude},${position.coords.longitude}`;
+    localStorage.setItem('startCoordinates', startCoordinatesParam);
+    startCoordinates = {
+      latitude: position.coords.latitude,
+      longitude: position.coords.longitude,
+    };
+    calculateTotalDistance();
+  }
 
   // create map
   if (map === null) {
@@ -123,8 +158,13 @@ function success(position) {
     coordinates.latitude,
     coordinates.longitude,
   ).distance;
+  let distanceProgress = 1 - distance / totalDistance;
+  if (distanceProgress > 1) distanceProgress = 1;
+  if (distanceProgress < 0) distanceProgress = 0;
+
   // laat die afstand zien
-  distanceElement.textContent = distance;
+  distanceElement.textContent =
+    distance + ' / ' + totalDistance + ' : ' + distanceProgress;
 
   // toon pijl die richting aangeeft
   pointToLocation(
@@ -193,6 +233,8 @@ if (isInIframe()) {
   parent.postMessage(
     {
       message: 'navigate-localstorage',
+      startCoordinates: startCoordinatesParam,
+      bananaFound: JSON.stringify(bananaFound),
       coordinates: coordinatesParam,
       locationName,
       nextPage,

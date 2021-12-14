@@ -49,6 +49,8 @@ function handleMessage(evt) {
     iframeElement.contentWindow.postMessage(markerCoordinates, '*');
   }
   if (evt.data.message === 'navigate-localstorage') {
+    localStorage.setItem('bananaFound', evt.data.bananaFound);
+    localStorage.setItem('startCoordinates', evt.data.startCoordinates);
     localStorage.setItem('coordinates', evt.data.coordinates);
     localStorage.setItem('locationName', evt.data.locationName);
     localStorage.setItem('nextPage', evt.data.nextPage);

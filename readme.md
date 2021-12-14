@@ -10,7 +10,4 @@
 
 To use the test-map, you'll need to create an account on MapBox and create `/scripts/secrets.js` in the same way as the example `/scripts/secrets.example.js`
 
-## Extra Plugins
-
-- [Camera (+ take a picture)](scripts/camera.js)
-- [QR Code Scanner](scripts/qr-scanner.js)
+Also, run `yarn` before starting development.
