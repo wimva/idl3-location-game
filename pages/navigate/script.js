@@ -108,6 +108,7 @@ function success(position) {
         "url('../../images/orangeBG.png')";
       document.querySelector('#map').style.opacity = 0.9;
       document.querySelector('#point-to-location').style.opacity = 1;
+      document.querySelector('#loading-container').style.display = 'none';
     });
 
     // fly to current position
