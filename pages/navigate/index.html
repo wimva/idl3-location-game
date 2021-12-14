@@ -25,18 +25,18 @@
   </head>
   <body>
 
-    <h1>Navigeer naar <span id="location-name"></span></h1>
+    <div id="map"></div>
+    <div class="point-to-location">
+      <img src="../../icons/arrow.png" alt="volg mij" id="point-to-location"/>
+    </div>
+
     <p>Nog <span id="distance"></span> meter</p>
-    <img src="../../icons/navigation.svg" alt="volg mij" id="point-to-location"/>
+    <p>Banana nearby: <span id="banana"></span></p>
 
     <div id="request-permissions">
       Mogen we je kompas gebruiken om je naar de juiste locatie te gidsen?
       <button id="request-permissions-button">Geef goedkeuring</button>
     </div>
-
-    <div id="map"></div>
-
-    <p>Banana nearby: <span id="banana"></span></p>
 
   </body>
 </html>

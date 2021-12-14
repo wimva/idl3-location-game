@@ -1,5 +1,4 @@
 // neem html elementen vast
-const locationNameElement = document.querySelector('#location-name');
 const distanceElement = document.querySelector('#distance');
 const bananaPhaseElement = document.querySelector('#banana');
 
@@ -42,16 +41,13 @@ if (localStorage.getItem('bananaFound')) {
 }
 
 // haal alle query parameters op
+const locationName = getQueryParam('locationName');
+const nextPage = getQueryParam('nextPage');
 const coordinatesParam = getQueryParam('coordinates').split(',');
 const coordinates = {
   latitude: parseFloat(coordinatesParam[0]),
   longitude: parseFloat(coordinatesParam[1]),
 }
-
-const locationName = getQueryParam('locationName');
-locationNameElement.textContent = locationName;
-
-const nextPage = getQueryParam('nextPage');
 
 // sla gegevens op in localStorage om later de draad terug op te kunnen pikken
 localStorage.setItem('coordinates', coordinatesParam);
@@ -98,7 +94,13 @@ function success(position) {
 
   // create map
   if (map === null) {
-    map = createMap("map", position.coords.latitude, position.coords.longitude, 15, 'mapbox://styles/mapbox/streets-v11');
+    map = createMap("map", position.coords.latitude, position.coords.longitude, 16, 'mapbox://styles/vaw-be-ap/ckx5zf9v40neq15rryvwq6pa6');
+    map.on('load', () => {
+      document.querySelector('body').style.backgroundImage = "url('../../images/orangeBG.png')";
+      document.querySelector('#map').style.opacity = 0.9;
+      document.querySelector('#point-to-location').style.opacity = 1;
+    });
+
 
   // fly to current position
   } else {
