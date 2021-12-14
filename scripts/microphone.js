@@ -23,21 +23,24 @@ Eerste argument: een callback functie waarin je telkens het volume van de microf
 //
 
 function microphoneSuccess(volume) {
-  console.log(volume); 
+  console.log(volume);
 }
 
 getMicrophone(microphoneSuccess);
 
 */
 
-
+/* eslint-disable no-unused-vars */
 async function getMicrophone(callback) {
-  const stream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false })
+  const stream = await navigator.mediaDevices.getUserMedia({
+    audio: true,
+    video: false,
+  });
 
-  audioContext = new AudioContext();
-  analyser = audioContext.createAnalyser();
-  microphone = audioContext.createMediaStreamSource(stream);
-  javascriptNode = audioContext.createScriptProcessor(2048, 1, 1);
+  let audioContext = new AudioContext();
+  let analyser = audioContext.createAnalyser();
+  let microphone = audioContext.createMediaStreamSource(stream);
+  let javascriptNode = audioContext.createScriptProcessor(2048, 1, 1);
 
   analyser.smoothingTimeConstant = 0.8;
   analyser.fftSize = 1024;
@@ -45,18 +48,18 @@ async function getMicrophone(callback) {
   microphone.connect(analyser);
   analyser.connect(javascriptNode);
   javascriptNode.connect(audioContext.destination);
-  javascriptNode.onaudioprocess = function() {
+  javascriptNode.onaudioprocess = function () {
     let array = new Uint8Array(analyser.frequencyBinCount);
     analyser.getByteFrequencyData(array);
     let values = 0;
 
     let length = array.length;
     for (let i = 0; i < length; i++) {
-      values += (array[i]);
+      values += array[i];
     }
 
     let average = values / length;
 
     if (callback) callback(average);
-  }
+  };
 }

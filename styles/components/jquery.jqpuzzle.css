@@ -1,140 +1,144 @@
+/* stylelint-disable */
+
 /*
  * jqPuzzle - Sliding Puzzles with jQuery
  * Default CSS theme
- * 
+ *
  * Copyright (c) 2008 Ralf Stoltze, http://www.2meter3.de/jqPuzzle/
  * Dual-licensed under the MIT and GPL licenses.
  *
- * Note that some CSS properties are set by the jqPuzzle script itself to make 
- * sure that the puzzle works properly. These properties will overwrite 
+ * Note that some CSS properties are set by the jqPuzzle script itself to make
+ * sure that the puzzle works properly. These properties will overwrite
  * user-defined properties.
- * 
- * The class 'jqp-solved' is added to the outermost element when a puzzle is 
+ *
+ * The class 'jqp-solved' is added to the outermost element when a puzzle is
  * solved by the user. Use '.jqPuzzle.jqp-solved' to define different styles
  * for solved puzzles.
  */
 
 /* outermost element which holds the full puzzle interface */
 .jqPuzzle {
-	padding: 5px;
-	border: 1px solid #222222;
-	background-color: #DDDDFF;
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+  padding: 5px;
+  border: 1px solid #222222;
+  background-color: #ddddff;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
 }
 
 /* only needed if external css rules set defaults for divs,
    this rule only resets the most common properties */
 .jqPuzzle div {
-	background-color: transparent;
-	margin: 0px;
-	padding: 0px;
-	border-style: none;
+  background-color: transparent;
+  margin: 0px;
+  padding: 0px;
+  border-style: none;
 }
 
 /* div wrapper which holds the puzzle pieces and the solution image */
 .jqPuzzle .jqp-wrapper {
-	padding: 2px;
-	border: 1px solid #FFFFFF;
-	background-color: #444455;
+  padding: 2px;
+  border: 1px solid #ffffff;
+  background-color: #444455;
 }
 
 /* a single puzzle piece */
 .jqPuzzle .jqp-piece {
-	border: 1px solid #FFFFFF;
-	color: #FFFFFF;
-	font-size: 36px;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  font-size: 36px;
 }
 
 .jqPuzzle .jqp-piece:hover {
-	border-style: dashed;
+  border-style: dashed;
 }
 
 .jqPuzzle.jqp-solved .jqp-piece:hover {
-	border-style: solid;
+  border-style: solid;
 }
 
 /* the controls area which holds the buttons and the display */
 .jqPuzzle .jqp-controls {
-	float: left;
+  float: left;
 }
 
 /* a button */
 .jqPuzzle .jqp-controls a {
-	margin-top: 5px;
-	margin-right: 8px;
-	padding: 3px 5px;
-	border: 1px outset #FFFFFF;
-	background-color: #777799;
-	color: #FFFFFF;
-	font-size: 14px;
-	line-height: normal;
-	float: left;
+  margin-top: 5px;
+  margin-right: 8px;
+  padding: 3px 5px;
+  border: 1px outset #ffffff;
+  background-color: #777799;
+  color: #ffffff;
+  font-size: 14px;
+  line-height: normal;
+  float: left;
 }
 
 .jqPuzzle .jqp-controls a:hover {
-	background-color: #7777BB;
+  background-color: #7777bb;
 }
 
 /* toggle/down state for buttons */
-.jqPuzzle .jqp-controls a.jqp-toggle, 
+.jqPuzzle .jqp-controls a.jqp-toggle,
 .jqPuzzle .jqp-controls a.jqp-down {
-	padding-left: 4px;
-	padding-right: 6px;
-	border-style: inset;
-	background-color: #BBBBFF;
+  padding-left: 4px;
+  padding-right: 6px;
+  border-style: inset;
+  background-color: #bbbbff;
 }
 
 /* disabled state for buttons */
 .jqPuzzle .jqp-controls a.jqp-disabled {
-	background-color: #DDDDEE;
-	color: #FFFFFF;
+  background-color: #ddddee;
+  color: #ffffff;
 }
 
 /* the area which holds the moves/seconds display */
 .jqPuzzle .jqp-controls span {
-	margin-top: 5px;
-	padding: 2px 4px;
-	padding-left: 0px;
-	border: none;
-	background-color: transparent;
-	color: #666666;
-	font-size: 14px;
-	float: left;
+  margin-top: 5px;
+  padding: 2px 4px;
+  padding-left: 0px;
+  border: none;
+  background-color: transparent;
+  color: #666666;
+  font-size: 14px;
+  float: left;
 }
 
 /* disabled state for the display (non-shuffled puzzle) */
 .jqPuzzle .jqp-controls span.jqp-disabled {
-	color: #AAAAAA;
+  color: #aaaaaa;
 }
 
 /* solved state for the display (non-shuffled puzzle) */
 .jqPuzzle.jqp-solved .jqp-controls span {
-	padding: 1px 3px;
-	border: 1px dotted #0F8F08;
-	background-color: #9FEF86;
-	color: #0F8F08;
+  padding: 1px 3px;
+  border: 1px dotted #0f8f08;
+  background-color: #9fef86;
+  color: #0f8f08;
 }
 
 /* a text field for the moves/seconds display */
 .jqPuzzle .jqp-controls span input {
-	margin: 0px 3px;
-	padding: 3px;
-	padding-bottom: 2px;
-	border-style: none;
-	background-color: #FFFFFF;
-	color: #666666;
-	font-weight: bold;
-	text-align: right;
+  margin: 0px 3px;
+  padding: 3px;
+  padding-bottom: 2px;
+  border-style: none;
+  background-color: #ffffff;
+  color: #666666;
+  font-weight: bold;
+  text-align: right;
 }
 
 /* disabled state for the text fields */
 .jqPuzzle .jqp-controls span.jqp-disabled input {
-	background-color: #EEEEFF;
-	color: #AAAAAA;
+  background-color: #eeeeff;
+  color: #aaaaaa;
 }
 
 /* solved state for the text fields */
 .jqPuzzle.jqp-solved .jqp-controls span input {
-	background-color: #C2FFAF;
-	color: #444444;
+  background-color: #c2ffaf;
+  color: #444444;
 }
+
+/* stylelint-enable */

@@ -1,14 +1,15 @@
 // Degrees to Radians
 function degreesToRadians(degrees) {
-  return degrees * Math.PI / 180;
+  return (degrees * Math.PI) / 180;
 }
 
 // Redians to Degrees
 function radiansToDegrees(radians) {
-  return radians * 180 / Math.PI;
+  return (radians * 180) / Math.PI;
 }
 
 // Calculate Distance Between LatLongs
+/* eslint-disable no-unused-vars */
 function getDistance(lat1, lon1, lat2, lon2) {
   const earthRadiusKm = 6371;
 
@@ -20,15 +21,20 @@ function getDistance(lat1, lon1, lat2, lon2) {
   const lon1rad = degreesToRadians(lon1);
   const lon2rad = degreesToRadians(lon2);
 
-  const a = Math.sin(dLat / 2) * Math.sin(dLat / 2)
-          + Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat1rad) * Math.cos(lat2rad);
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.sin(dLon / 2) *
+      Math.sin(dLon / 2) *
+      Math.cos(lat1rad) *
+      Math.cos(lat2rad);
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
-  const distance = Math.round((earthRadiusKm * c) * 1000);
+  const distance = Math.round(earthRadiusKm * c * 1000);
 
   const y = Math.sin(lon2rad - lon1rad) * Math.cos(lat2rad);
-  const x = Math.cos(lat1rad) * Math.sin(lat2rad)
-        - Math.sin(lat1rad) * Math.cos(lat2rad) * Math.cos(lon2rad - lon1rad);
+  const x =
+    Math.cos(lat1rad) * Math.sin(lat2rad) -
+    Math.sin(lat1rad) * Math.cos(lat2rad) * Math.cos(lon2rad - lon1rad);
   let brng = Math.atan2(y, x);
   brng = radiansToDegrees(brng);
 

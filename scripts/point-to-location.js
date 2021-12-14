@@ -62,7 +62,11 @@ navigator.geolocation.watchPosition(success, error, options);
 
 /* Source: https://dev.to/orkhanjafarovr/real-compass-on-mobile-browsers-with-javascript-3emi */
 
-const isIOS = navigator.userAgent.match(/(iPod|iPhone|iPad)/) && navigator.userAgent.match(/AppleWebKit/);
+/* eslint-disable no-unused-vars */
+
+const isIOS =
+  navigator.userAgent.match(/(iPod|iPhone|iPad)/) &&
+  navigator.userAgent.match(/AppleWebKit/);
 let compassStarted = false;
 let compassStartedViaClick = false;
 let compass = null;
@@ -77,19 +81,23 @@ function startCompass() {
   if (!compassStarted) {
     compassStarted = true;
     if (!isIOS) {
-      window.addEventListener("deviceorientationabsolute", handler, true);
+      window.addEventListener('deviceorientationabsolute', handler, true);
     } else {
       DeviceOrientationEvent.requestPermission()
         .then((response) => {
-          if (response === "granted") {
-            window.addEventListener("deviceorientation", handler, true);
+          if (response === 'granted') {
+            window.addEventListener('deviceorientation', handler, true);
           } else {
-            alert("Zonder kompas wordt het lastig. Richtingaanwijzing via het noorden.");
+            alert(
+              'Zonder kompas wordt het lastig. Richtingaanwijzing via het noorden.',
+            );
           }
         })
         .catch(() => {
           if (compassStartedViaClick) {
-            alert("Kompas niet beschikbaar. Richtingaanwijzing via het noorden.")
+            alert(
+              'Kompas niet beschikbaar. Richtingaanwijzing via het noorden.',
+            );
           } else {
             showRequestPermissions();
             requestPermissionsButtonElement.onclick = () => {
@@ -97,7 +105,7 @@ function startCompass() {
               compassStarted = false;
               hideRequestPermissions();
               startCompass();
-            }
+            };
           }
         });
     }
@@ -126,12 +134,24 @@ function onChange() {
   }
 }
 
-function pointToLocation(lat1, lon1, lat2, lon2, pointerSelector, requestPermissionsButtonSelector, onShowRequestPermissions, onHideRequestPermissions, onCompasChange) {
+function pointToLocation(
+  lat1,
+  lon1,
+  lat2,
+  lon2,
+  pointerSelector,
+  requestPermissionsButtonSelector,
+  onShowRequestPermissions,
+  onHideRequestPermissions,
+  onCompasChange,
+) {
   showRequestPermissions = onShowRequestPermissions;
   hideRequestPermissions = onHideRequestPermissions;
   compasChange = onCompasChange;
 
-  requestPermissionsButtonElement = document.querySelector(requestPermissionsButtonSelector);
+  requestPermissionsButtonElement = document.querySelector(
+    requestPermissionsButtonSelector,
+  );
   pointerElement = document.querySelector(pointerSelector);
 
   direction = getDistance(lat1, lon1, lat2, lon2).directionInDegrees;

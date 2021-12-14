@@ -8,28 +8,28 @@ const successRadiusInMeter = 20;
 // banana definitions
 const bananaMax = 7;
 const bananaPositions = [
-  {latitude: 51.218381, longitude: 4.412834}, // Meir vs Jezusstraat
-  {latitude: 51.217518, longitude: 4.418973}, // Wasbar Keyserlei
-  {latitude: 51.218115, longitude: 4.419210}, // Breydelstraat vs Statiestraat
-  {latitude: 51.219287, longitude: 4.418324}, // Rooseveltplaats
-  {latitude: 51.219781, longitude: 4.415434}, // Kipdorp
-  {latitude: 51.219491, longitude: 4.412266}, // Campus LNI
-  {latitude: 51.221262, longitude: 4.412270}, // Speeltuin Frans Halsplein
-  {latitude: 51.220678, longitude: 4.410003}, // Sint Jacobsmarkt
-  {latitude: 51.222744, longitude: 4.410560}, // UA
-  {latitude: 51.221713, longitude: 4.413793}, // Ossenmarkt
-  {latitude: 51.222067, longitude: 4.413956}, // Begijnhof
-  {latitude: 51.225176, longitude: 4.409853}, // Paardenmarkt
-  {latitude: 51.224965, longitude: 4.412349}, // Paardenmarkt
-  {latitude: 51.228235, longitude: 4.409270}, // Haven MAS
-  {latitude: 51.228295, longitude: 4.407833}, // Haven MAS
-  {latitude: 51.227395, longitude: 4.407852}, // FelixArchief
-  {latitude: 51.227121, longitude: 4.405379}, // Oude Leeuwenrui
-  {latitude: 51.229616, longitude: 4.402194}, // Bonapartedok
-  {latitude: 51.230960, longitude: 4.403076}, // Friendship Building
-  {latitude: 51.230248, longitude: 4.404100}, // Nassaustraat
-  {latitude: 51.230694, longitude: 4.405550}, // Cremerie Germaine
-  {latitude: 51.231449, longitude: 4.404206}, // Amsterdamstraat
+  { latitude: 51.218381, longitude: 4.412834 }, // Meir vs Jezusstraat
+  { latitude: 51.217518, longitude: 4.418973 }, // Wasbar Keyserlei
+  { latitude: 51.218115, longitude: 4.41921 }, // Breydelstraat vs Statiestraat
+  { latitude: 51.219287, longitude: 4.418324 }, // Rooseveltplaats
+  { latitude: 51.219781, longitude: 4.415434 }, // Kipdorp
+  { latitude: 51.219491, longitude: 4.412266 }, // Campus LNI
+  { latitude: 51.221262, longitude: 4.41227 }, // Speeltuin Frans Halsplein
+  { latitude: 51.220678, longitude: 4.410003 }, // Sint Jacobsmarkt
+  { latitude: 51.222744, longitude: 4.41056 }, // UA
+  { latitude: 51.221713, longitude: 4.413793 }, // Ossenmarkt
+  { latitude: 51.222067, longitude: 4.413956 }, // Begijnhof
+  { latitude: 51.225176, longitude: 4.409853 }, // Paardenmarkt
+  { latitude: 51.224965, longitude: 4.412349 }, // Paardenmarkt
+  { latitude: 51.228235, longitude: 4.40927 }, // Haven MAS
+  { latitude: 51.228295, longitude: 4.407833 }, // Haven MAS
+  { latitude: 51.227395, longitude: 4.407852 }, // FelixArchief
+  { latitude: 51.227121, longitude: 4.405379 }, // Oude Leeuwenrui
+  { latitude: 51.229616, longitude: 4.402194 }, // Bonapartedok
+  { latitude: 51.23096, longitude: 4.403076 }, // Friendship Building
+  { latitude: 51.230248, longitude: 4.4041 }, // Nassaustraat
+  { latitude: 51.230694, longitude: 4.40555 }, // Cremerie Germaine
+  { latitude: 51.231449, longitude: 4.404206 }, // Amsterdamstraat
 ];
 const bananaPhase1 = 20;
 const bananaPhase2 = 15;
@@ -47,7 +47,7 @@ const coordinatesParam = getQueryParam('coordinates').split(',');
 const coordinates = {
   latitude: parseFloat(coordinatesParam[0]),
   longitude: parseFloat(coordinatesParam[1]),
-}
+};
 
 // sla gegevens op in localStorage om later de draad terug op te kunnen pikken
 localStorage.setItem('coordinates', coordinatesParam);
@@ -55,7 +55,9 @@ localStorage.setItem('locationName', locationName);
 localStorage.setItem('nextPage', nextPage);
 
 // show/ hide request permissions div
-const requestPermissionsElement = document.querySelector('#request-permissions')
+const requestPermissionsElement = document.querySelector(
+  '#request-permissions',
+);
 function onShowRequestPermissions() {
   requestPermissionsElement.style.display = 'block';
 }
@@ -79,9 +81,9 @@ function onCompasChange(compass) {
 // apply changes to map
 function onMapChange() {
   if (map) {
-    const goal = {duration: 100};
+    const goal = { duration: 100 };
 
-    if (mapCompass) goal.bearing = compass;
+    if (mapCompass) goal.bearing = mapCompass;
     if (mapCenter) goal.center = mapCenter;
 
     map.easeTo(goal);
@@ -94,31 +96,52 @@ function success(position) {
 
   // create map
   if (map === null) {
-    map = createMap("map", position.coords.latitude, position.coords.longitude, 16, 'mapbox://styles/vaw-be-ap/ckx5zf9v40neq15rryvwq6pa6');
+    map = createMap(
+      'map',
+      position.coords.latitude,
+      position.coords.longitude,
+      16,
+      'mapbox://styles/vaw-be-ap/ckx5zf9v40neq15rryvwq6pa6',
+    );
     map.on('load', () => {
-      document.querySelector('body').style.backgroundImage = "url('../../images/orangeBG.png')";
+      document.querySelector('body').style.backgroundImage =
+        "url('../../images/orangeBG.png')";
       document.querySelector('#map').style.opacity = 0.9;
       document.querySelector('#point-to-location').style.opacity = 1;
     });
 
-
-  // fly to current position
+    // fly to current position
   } else {
     onMapChange();
   }
 
   // bereken afstand tussen mijn locatie en die van mijn doel
-  const distance = getDistance(position.coords.latitude, position.coords.longitude, coordinates.latitude, coordinates.longitude).distance;
+  const distance = getDistance(
+    position.coords.latitude,
+    position.coords.longitude,
+    coordinates.latitude,
+    coordinates.longitude,
+  ).distance;
   // laat die afstand zien
   distanceElement.textContent = distance;
 
   // toon pijl die richting aangeeft
-  pointToLocation(position.coords.latitude, position.coords.longitude, coordinates.latitude, coordinates.longitude, '#point-to-location', '#request-permissions-button', onShowRequestPermissions, onHideRequestPermissions, onCompasChange);
+  pointToLocation(
+    position.coords.latitude,
+    position.coords.longitude,
+    coordinates.latitude,
+    coordinates.longitude,
+    '#point-to-location',
+    '#request-permissions-button',
+    onShowRequestPermissions,
+    onHideRequestPermissions,
+    onCompasChange,
+  );
 
   // de afstand tussen mijn locatie en die van mijn doel is minder dan 20 meter?
   if (distance < successRadiusInMeter) {
     // navigeer naar de pagina die getoond moet worden als ik in 20 meter van locatie ben
-    location.assign(`../${nextPage}/index.html`)
+    location.assign(`../${nextPage}/index.html`);
   }
 
   // banana detector
@@ -126,7 +149,12 @@ function success(position) {
   if (bananaFound.length < bananaMax) {
     bananaPositions.forEach((banana, index) => {
       if (bananaFound.indexOf(index) == -1) {
-        const bananaDistance = getDistance(position.coords.latitude, position.coords.longitude, banana.latitude, banana.longitude).distance;
+        const bananaDistance = getDistance(
+          position.coords.latitude,
+          position.coords.longitude,
+          banana.latitude,
+          banana.longitude,
+        ).distance;
         if (bananaDistance <= bananaPhase4) {
           bananaPhase = 4;
           bananaFound.push(index);
@@ -142,7 +170,8 @@ function success(position) {
       }
     });
   }
-  bananaPhaseElement.textContent = bananaPhase + ' - ' + bananaFound.length + ' / ' + bananaMax;
+  bananaPhaseElement.textContent =
+    bananaPhase + ' - ' + bananaFound.length + ' / ' + bananaMax;
 }
 
 // error for GPS
@@ -150,25 +179,31 @@ function error(err) {
   console.warn('ERROR(' + err.code + '): ' + err.message);
 }
 
+// get map gps positions from iFrame
+function handleMessage(evt) {
+  success({ coords: { latitude: evt.data.lat, longitude: evt.data.lng } });
+}
+
 // check if page lives in the test iframe
 if (isInIframe()) {
-
-  // get map gps positions
-  function handleMessage (evt) {
-  	success({coords: {latitude: evt.data.lat, longitude: evt.data.lng}});
-  }
   // listen to messages from test-iframe
-  window.addEventListener("message", handleMessage, false);
-  parent.postMessage({message: "navigate-init"}, "*");
-  parent.postMessage({message: "navigate-localstorage", coordinates: coordinatesParam, locationName, nextPage}, "*");
-
+  window.addEventListener('message', handleMessage, false);
+  parent.postMessage({ message: 'navigate-init' }, '*');
+  parent.postMessage(
+    {
+      message: 'navigate-localstorage',
+      coordinates: coordinatesParam,
+      locationName,
+      nextPage,
+    },
+    '*',
+  );
 } else {
-
   // options for geolocation
   const options = {
     enableHighAccuracy: true,
     timeout: 20000,
-    maximumAge: 0
+    maximumAge: 0,
   };
 
   // access real gps data

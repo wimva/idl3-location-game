@@ -41,18 +41,29 @@ startCamera(false, '#video', '#canvas', '#capture', callback);
 
 */
 
-async function startCamera(useFrontCamera, videoSelector, canvasSelector, captureSelector, onClickFunction) {
+/* eslint-disable no-unused-vars */
+async function startCamera(
+  useFrontCamera,
+  videoSelector,
+  canvasSelector,
+  captureSelector,
+  onClickFunction,
+) {
   let videoElement = document.querySelector(videoSelector);
   let canvasElement = document.querySelector(canvasSelector);
   let captureButton = document.querySelector(captureSelector);
 
-  if (!videoElement) console.error('Video selector could not find a valid element');
+  if (!videoElement)
+    console.error('Video selector could not find a valid element');
 
-  let videoConfiguration = { facingMode: { exact: "environment" } };
-  if (useFrontCamera) videoConfiguration = { facingMode: "user" };
+  let videoConfiguration = { facingMode: { exact: 'environment' } };
+  if (useFrontCamera) videoConfiguration = { facingMode: 'user' };
 
   try {
-    let stream = await navigator.mediaDevices.getUserMedia({ video: videoConfiguration, audio: false });
+    let stream = await navigator.mediaDevices.getUserMedia({
+      video: videoConfiguration,
+      audio: false,
+    });
     videoElement.srcObject = stream;
 
     if (captureButton && canvasElement) {
@@ -65,7 +76,7 @@ async function startCamera(useFrontCamera, videoSelector, canvasSelector, captur
         if (onClickFunction) onClickFunction(imageBase64);
       };
     }
-  } catch(e) {
+  } catch (e) {
     alert(e);
   }
-};
+}

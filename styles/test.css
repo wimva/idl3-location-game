@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   height: 100%;
   font-family: sans-serif;
 }
@@ -8,7 +9,8 @@ html, body {
   height: 100%;
 }
 
-#iframe, .simulator {
+#iframe,
+.simulator {
   flex: 1;
 }
 

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 function getNextPage() {
   // haal laatste opgeslagen info op
   const nextPage = localStorage.getItem('nextPage');
@@ -14,4 +15,4 @@ function getNextPage() {
 
   // als er niets gevonden is navigeren we naar de startpagina
   return './pages/start/index.html';
-};
+}
