@@ -189,7 +189,7 @@ function success(position) {
 
   // banana detector
   let bananaPhase = 0;
-  if (bananaFound.length < bananaMax) {
+  if (bananaFound.length < bananaMax && nextPage !== 'zoo') {
     bananaPositions.forEach((banana, index) => {
       if (bananaFound.indexOf(index) == -1) {
         const bananaDistance = getDistance(
