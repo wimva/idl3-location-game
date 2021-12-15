@@ -12,6 +12,7 @@ const bananaPositions = [
   { latitude: 51.217518, longitude: 4.418973 }, // Wasbar Keyserlei
   { latitude: 51.218115, longitude: 4.41921 }, // Breydelstraat vs Statiestraat
   { latitude: 51.219287, longitude: 4.418324 }, // Rooseveltplaats
+  { latitude: 51.220794, longitude: 4.41565 }, // Korte Winkelstraat
   { latitude: 51.219781, longitude: 4.415434 }, // Kipdorp
   { latitude: 51.219491, longitude: 4.412266 }, // Campus LNI
   { latitude: 51.221262, longitude: 4.41227 }, // Speeltuin Frans Halsplein
@@ -21,6 +22,7 @@ const bananaPositions = [
   { latitude: 51.222067, longitude: 4.413956 }, // Begijnhof
   { latitude: 51.225176, longitude: 4.409853 }, // Paardenmarkt
   { latitude: 51.224965, longitude: 4.412349 }, // Paardenmarkt
+  { latitude: 51.225671, longitude: 4.410869 }, // Stijfselrui
   { latitude: 51.228235, longitude: 4.40927 }, // Haven MAS
   { latitude: 51.228295, longitude: 4.407833 }, // Haven MAS
   { latitude: 51.227395, longitude: 4.407852 }, // FelixArchief
