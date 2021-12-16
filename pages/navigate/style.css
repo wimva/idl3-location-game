@@ -9,6 +9,7 @@ body {
   height: 100%;
 }
 
+/* map */
 #map {
   width: 100%;
   height: 100%;
@@ -17,6 +18,7 @@ body {
   opacity: 0;
 }
 
+/* arrow */
 .point-to-location {
   position: absolute;
   top: 50%;
@@ -30,6 +32,7 @@ body {
   opacity: 0;
 }
 
+/* loader */
 #loading-container {
   width: 100%;
   height: 100%;
@@ -51,4 +54,30 @@ body {
 .loading-content img {
   display: block;
   margin-bottom: 2rem;
+}
+
+/* permissions */
+#request-permissions {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  padding: 1rem;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-image: url('../../images/general/backgrounds/neutralBG.png');
+  background-position: center;
+  background-size: cover;
+}
+
+#request-permissions p {
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+#request-permissions button {
+  margin-top: 2rem;
 }

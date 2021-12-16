@@ -1,7 +1,22 @@
 button {
-  background-color: var(--button-color);
+  background: none;
+  background-image: url('../../images/general/button.png');
+  background-size: contain;
   color: var(--white);
-  padding: 0.5em 1em;
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-align: center;
   border: 0;
-  border-radius: 0.25em;
+  width: 200px;
+  height: 58px;
+  outline: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transform-origin: center;
+}
+
+button:active {
+  transform: rotate(-0.5deg) translateY(2px);
 }
