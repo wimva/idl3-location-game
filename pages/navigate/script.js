@@ -142,7 +142,7 @@ function success(position) {
     );
     map.on('load', () => {
       document.querySelector('body').style.backgroundImage =
-        "url('../../images/orangeBG.png')";
+        "url('../../images/general/backgrounds/orangeBG.png')";
       document.querySelector('#map').style.opacity = 0.9;
       document.querySelector('#point-to-location').style.opacity = 1;
       document.querySelector('#loading-container').style.display = 'none';
