@@ -9,6 +9,11 @@
     <link href="../../styles/variables.css" type="text/css" rel="stylesheet" />
     <link href="../../styles/general.css" type="text/css" rel="stylesheet" />
     <link
+      href="../../styles/components/text.css"
+      type="text/css"
+      rel="stylesheet"
+    />
+    <link
       href="../../styles/components/button.css"
       type="text/css"
       rel="stylesheet"
@@ -36,12 +41,22 @@
   <body>
     <div id="map"></div>
 
-    <div class="point-to-location">
-      <img
-        src="../../images/bananaSonar/arrow.png"
-        alt="volg mij"
-        id="point-to-location"
-      />
+    <div id="navigate-content">
+      <div class="point-to-location">
+        <img
+          src="../../images/bananaSonar/arrow.png"
+          alt="volg mij"
+          id="point-to-location"
+        />
+      </div>
+
+      <div class="progress-container">
+        <img
+          class="progress-background"
+          src="../../images/bananaSonar/loaderBarEmpty.png"
+        />
+        <div id="progress" class="progress-foreground"></div>
+      </div>
     </div>
 
     <div id="loading-container">
@@ -51,14 +66,13 @@
       </div>
     </div>
 
-    <p>Nog <span id="distance"></span> meter</p>
-    <p>Banana nearby: <span id="banana"></span></p>
-
     <div id="request-permissions">
-      <p>
-        Mogen we je kompas gebruiken om je naar de juiste locatie te gidsen?
-      </p>
-      <button id="request-permissions-button">Geef goedkeuring</button>
+      <div class="text text-02">
+        <p>
+          Mogen we je kompas gebruiken om je naar de juiste locatie te gidsen?
+        </p>
+      </div>
+      <button id="request-permissions-button">Akkoord</button>
     </div>
   </body>
 </html>

@@ -29,7 +29,11 @@ body {
 #point-to-location {
   width: 100px;
   height: auto;
-  opacity: 0;
+}
+
+/* main content */
+#navigate-content {
+  display: none;
 }
 
 /* loader */
@@ -74,10 +78,36 @@ body {
 }
 
 #request-permissions p {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   text-align: center;
 }
 
 #request-permissions button {
   margin-top: 2rem;
+}
+
+/* progress */
+.progress-container {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-100px);
+}
+
+.progress-background {
+  width: 200px;
+  height: auto;
+  display: block;
+}
+
+.progress-foreground {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 0;
+  height: 15px;
+  border-radius: 8px;
+  overflow: hidden;
+  background-image: url('../../images/bananaSonar/loaderBarFull.png');
+  background-size: 184px 15px;
 }

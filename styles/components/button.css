@@ -3,7 +3,9 @@ button {
   background-image: url('../../images/general/button.png');
   background-size: contain;
   color: var(--white);
-  font-size: 1.3rem;
+  font-family: 'Arvo', serif;
+  text-shadow: 1px 1px 0.5rem rgba(0, 0, 0, 0.4);
+  font-size: 1.5rem;
   font-weight: bold;
   text-align: center;
   border: 0;

@@ -1,0 +1,36 @@
+.text {
+  background-size: contain;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text-01 {
+  background-image: url('../../images/general/text/textbal01.png');
+  width: 320px; /* TODO: to define */
+  height: 204px; /* TODO: to define */
+  padding: 0 2.5rem 1.25rem; /* TODO: to define */
+}
+.text-01 p {
+  transform: rotate(1deg); /* TODO: to define */
+}
+
+.text-02 {
+  background-image: url('../../images/general/text/textbal02.png');
+  width: 320px;
+  height: 204px;
+  padding: 0 2.5rem 1.25rem;
+}
+.text-02 p {
+  transform: rotate(1deg);
+}
+
+.text-03 {
+  background-image: url('../../images/general/text/textbal03.png');
+  width: 320px; /* TODO: to define */
+  height: 204px; /* TODO: to define */
+  padding: 0 2.5rem 1.25rem; /* TODO: to define */
+}
+.text-03 p {
+  transform: rotate(1deg); /* TODO: to define */
+}

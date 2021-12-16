@@ -1,6 +1,5 @@
 // neem html elementen vast
-const distanceElement = document.querySelector('#distance');
-const bananaPhaseElement = document.querySelector('#banana');
+const progressElement = document.querySelector('#progress');
 
 // definieer radius waarbinnen doelen gevonden mogen worden
 const successRadiusInMeter = 20;
@@ -144,7 +143,7 @@ function success(position) {
       document.querySelector('body').style.backgroundImage =
         "url('../../images/general/backgrounds/orangeBG.png')";
       document.querySelector('#map').style.opacity = 0.9;
-      document.querySelector('#point-to-location').style.opacity = 1;
+      document.querySelector('#navigate-content').style.display = 'block';
       document.querySelector('#loading-container').style.display = 'none';
     });
 
@@ -165,8 +164,10 @@ function success(position) {
   if (distanceProgress < 0) distanceProgress = 0;
 
   // laat die afstand zien
-  distanceElement.textContent =
-    distance + ' / ' + totalDistance + ' : ' + distanceProgress;
+  console.log(
+    'distance: ' + distance + ' / ' + totalDistance + ' : ' + distanceProgress,
+  );
+  progressElement.style.width = 184 * distanceProgress + 'px';
 
   // toon pijl die richting aangeeft
   pointToLocation(
@@ -213,8 +214,10 @@ function success(position) {
       }
     });
   }
-  bananaPhaseElement.textContent =
-    bananaPhase + ' - ' + bananaFound.length + ' / ' + bananaMax;
+
+  console.log(
+    'bananas: ' + bananaPhase + ' - ' + bananaFound.length + ' / ' + bananaMax,
+  );
 }
 
 // error for GPS
