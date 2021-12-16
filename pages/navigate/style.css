@@ -3,6 +3,7 @@ html {
 }
 
 body {
+  background-image: url('../../images/general/backgrounds/neutralBG.png');
   background-position: center;
   background-size: cover;
   height: 100%;
@@ -35,4 +36,19 @@ body {
   position: absolute;
   top: 0;
   left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.loading-content img {
+  display: block;
+  margin-bottom: 2rem;
 }

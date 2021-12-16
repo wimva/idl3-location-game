@@ -1,0 +1,16 @@
+.loader {
+  height: 50px;
+  width: 50px;
+  background: url('../../images/general/loader/loaderSprite.png');
+  background-size: 400px 50px;
+  animation: sprite 750ms steps(8) infinite;
+}
+
+@keyframes sprite {
+  from {
+    background-position: 0px;
+  }
+  to {
+    background-position: -400px;
+  }
+}

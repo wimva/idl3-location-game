@@ -13,6 +13,11 @@
       type="text/css"
       rel="stylesheet"
     />
+    <link
+      href="../../styles/components/loader.css"
+      type="text/css"
+      rel="stylesheet"
+    />
     <link href="style.css" type="text/css" rel="stylesheet" />
     <link
       href="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css"
@@ -37,7 +42,12 @@
         id="point-to-location"
       />
     </div>
-    <div id="loading-container">loading map...</div>
+    <div id="loading-container">
+      <div class="loading-content">
+        <img src="../../images/general/logo.png" width="75" height="auto" />
+        <div class="loader"></div>
+      </div>
+    </div>
 
     <p>Nog <span id="distance"></span> meter</p>
     <p>Banana nearby: <span id="banana"></span></p>
