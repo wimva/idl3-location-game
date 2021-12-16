@@ -1,5 +1,14 @@
 // neem html elementen vast
 const progressElement = document.querySelector('#progress');
+const bananaCollection = document.querySelector('#banana-collection');
+const bananaCollectionCollected = document.querySelector(
+  '#banana-collection-collected',
+);
+const bananaCollectionTotal = document.querySelector(
+  '#banana-collection-total',
+);
+const navigateContent = document.querySelector('#navigate-content');
+const bananaSonar = document.querySelector('#banana-sonar');
 
 // definieer radius waarbinnen doelen gevonden mogen worden
 const successRadiusInMeter = 20;
@@ -36,9 +45,44 @@ const bananaPhase1 = 20;
 const bananaPhase2 = 15;
 const bananaPhase3 = 10;
 const bananaPhase4 = 5;
+let bananaFoundAnimationInProgress = false;
 let bananaFound = [];
 if (localStorage.getItem('bananaFound')) {
   bananaFound = JSON.parse(localStorage.getItem('bananaFound'));
+}
+bananaCollectionTotal.textContent = bananaMax;
+
+function startBananaFoundAnimation() {
+  bananaFoundAnimationInProgress = true;
+  const sonarBanana = document.querySelector('.banana-sonar-banana');
+  const sonarCheck = document.querySelector('.banana-sonar-check');
+  const sonarBackground = document.querySelector(
+    '.banana-sonar-full-background',
+  );
+  setTimeout(() => {
+    sonarBanana.style.transform = `translateY(-30px) scale(1.5, 1.5)`;
+  }, 200);
+  setTimeout(() => {
+    sonarBanana.style.transform = `translateY(300px) scale(0.75, 0.75)`;
+    sonarBanana.style.opacity = 0;
+    sonarCheck.style.transform = `rotate(45deg) scale(0.25, 0.25)`;
+    sonarCheck.style.opacity = 0;
+    sonarBackground.style.opacity = 0;
+  }, 1000);
+  setTimeout(() => {
+    bananaFoundAnimationInProgress = false;
+    navigateContent.className = '';
+    bananaSonar.className = 'banana-sonar-phase-0';
+    bananaCollectionCollected.textContent = bananaFound.length;
+  }, 2000);
+  setTimeout(() => {
+    // reset
+    sonarBanana.style.transform = ``;
+    sonarBanana.style.opacity = 1;
+    sonarCheck.style.transform = ``;
+    sonarCheck.style.opacity = 1;
+    sonarBackground.style.opacity = 1;
+  }, 2100);
 }
 
 // haal alle query parameters op
@@ -64,6 +108,13 @@ localStorage.setItem('startCoordinates', startCoordinatesParam);
 localStorage.setItem('coordinates', coordinatesParam);
 localStorage.setItem('locationName', locationName);
 localStorage.setItem('nextPage', nextPage);
+
+// show/ hide banana-collection
+if (nextPage === 'zoo') {
+  bananaCollection.style.display = 'none';
+} else {
+  bananaCollection.style.display = 'flex';
+}
 
 // show/ hide request permissions div
 const requestPermissionsElement = document.querySelector(
@@ -190,6 +241,7 @@ function success(position) {
 
   // banana detector
   let bananaPhase = 0;
+  let bananaFoundIndex = 0;
   if (bananaFound.length < bananaMax && nextPage !== 'zoo') {
     bananaPositions.forEach((banana, index) => {
       if (bananaFound.indexOf(index) == -1) {
@@ -201,9 +253,7 @@ function success(position) {
         ).distance;
         if (bananaDistance <= bananaPhase4) {
           bananaPhase = 4;
-          bananaFound.push(index);
-          localStorage.setItem('bananaFound', JSON.stringify(bananaFound));
-          // TODO banana found action!
+          bananaFoundIndex = index;
         } else if (bananaDistance <= bananaPhase3) {
           bananaPhase = 3;
         } else if (bananaDistance <= bananaPhase2) {
@@ -218,7 +268,30 @@ function success(position) {
   console.log(
     'bananas: ' + bananaPhase + ' - ' + bananaFound.length + ' / ' + bananaMax,
   );
+  if (!bananaFoundAnimationInProgress) {
+    if (bananaPhase) {
+      navigateContent.className = 'banana-sonar-active';
+    } else {
+      navigateContent.className = '';
+    }
+    bananaSonar.className = 'banana-sonar-phase-' + bananaPhase;
+    bananaCollectionCollected.textContent = bananaFound.length;
+
+    if (bananaPhase === 4) {
+      startBananaFoundAnimation();
+      bananaFound.push(bananaFoundIndex);
+      localStorage.setItem('bananaFound', JSON.stringify(bananaFound));
+    }
+  }
 }
+
+/* TEST */
+setTimeout(() => {
+  navigateContent.className = 'banana-sonar-active';
+  bananaSonar.className = 'banana-sonar-phase-4';
+  startBananaFoundAnimation();
+}, 3000);
+/* /TEST */
 
 // error for GPS
 function error(err) {

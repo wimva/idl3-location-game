@@ -26,6 +26,10 @@ body {
   transform: translate(-50px, -108px);
 }
 
+.banana-sonar-active .point-to-location {
+  opacity: 0;
+}
+
 #point-to-location {
   width: 100px;
   height: auto;
@@ -110,4 +114,170 @@ body {
   overflow: hidden;
   background-image: url('../../images/bananaSonar/loaderBarFull.png');
   background-size: 184px 15px;
+}
+
+.banana-sonar-active .progress-container {
+  opacity: 0;
+}
+
+/* banana-sonar */
+.banana-sonar {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banana-sonar-banana {
+  display: block;
+  width: 80px;
+  height: auto;
+  animation: attention 750ms steps(1) infinite;
+  margin-right: 1.5rem;
+}
+
+.banana-sonar-phase-0 {
+  display: none;
+}
+
+.banana-sonar-phase-1 .banana-sonar-banana {
+  width: 80px;
+  margin-right: 1.5rem;
+}
+.banana-sonar-phase-2 .banana-sonar-banana {
+  width: 100px;
+  margin-right: 2rem;
+}
+.banana-sonar-phase-3 .banana-sonar-banana {
+  width: 160px;
+  margin-right: 3rem;
+}
+.banana-sonar-phase-4 .banana-sonar-banana {
+  width: 160px;
+  margin-right: 3rem;
+  animation: none;
+  transition: all 500ms ease-in-out;
+}
+
+.banana-sonar-background {
+  width: 320px;
+  height: 320px;
+  background: url('../../images/bananaSonar/sonarSprite.png');
+  background-size: 1920px 320px;
+}
+.banana-sonar-phase-1 .banana-sonar-background {
+  animation: attention 2000ms steps(1) infinite, sonar1 1000ms steps(3) infinite;
+}
+.banana-sonar-phase-2 .banana-sonar-background {
+  animation: attention 1000ms steps(1) infinite, sonar2 1000ms steps(3) infinite;
+}
+.banana-sonar-phase-3 .banana-sonar-background {
+  animation: attention 500ms steps(1) infinite, sonar3 750ms steps(3) infinite;
+}
+.banana-sonar-phase-4 .banana-sonar-background {
+  display: none;
+}
+
+.banana-sonar-full-background {
+  display: none;
+  background-image: url('../../images/general/backgrounds/orangeBG.png');
+  background-position: center;
+  background-size: cover;
+}
+.banana-sonar-phase-4 .banana-sonar-full-background {
+  display: flex;
+  transition: all 500ms ease-in-out;
+}
+.banana-sonar-check {
+  width: 180px;
+  height: 180px;
+  display: none;
+}
+.banana-sonar-phase-4 .banana-sonar-check {
+  display: flex;
+  transition: all 500ms ease-in-out;
+}
+
+@keyframes sonar1 {
+  from {
+    background-position: 0px;
+  }
+  to {
+    background-position: -960px;
+  }
+}
+
+@keyframes sonar2 {
+  from {
+    background-position: -320px;
+  }
+  to {
+    background-position: -1280px;
+  }
+}
+
+@keyframes sonar3 {
+  from {
+    background-position: -960px;
+  }
+  to {
+    background-position: -1920px;
+  }
+}
+
+@keyframes attention {
+  0% {
+    transform: rotate(2deg);
+  }
+  20% {
+    transform: rotate(4deg);
+  }
+  40% {
+    transform: rotate(-4deg);
+  }
+  60% {
+    transform: rotate(0deg);
+  }
+  80% {
+    transform: rotate(-2deg);
+  }
+  100% {
+    transform: rotate(2deg);
+  }
+}
+
+/* banana-collection */
+.banana-collection {
+  bottom: 0;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-100px);
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+}
+
+.banana-collection-icon {
+  display: inline-block;
+  width: 3rem;
+  margin-right: 0.5rem;
+}
+
+.banana-collection-text {
+  font-family: 'Arvo', serif;
+  font-weight: bold;
+  font-size: 1.5rem;
+  display: inline-block;
+  margin: 0 0.25rem;
+  opacity: 0.5;
+}
+
+#banana-collection-collected {
+  opacity: 1;
 }
