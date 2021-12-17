@@ -75,6 +75,7 @@
   cursor: pointer;
   bottom: 7%;
   position: absolute;
+  user-select: none;
 }
 .speech-button:active {
   transform: rotate(-0.5deg) translateY(2px);

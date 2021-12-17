@@ -1,0 +1,36 @@
+html {
+  height: 100%;
+}
+
+body {
+  background-image: url('../../images/general/backgrounds/neutralBG.png');
+  background-position: center;
+  background-size: cover;
+  height: 100%;
+}
+
+.countdown {
+  background-position: center;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#countdown-1 {
+  background-image: url('../../images/runGorillaRun/1countdownGreen.png');
+}
+
+#countdown-2 {
+  background-image: url('../../images/runGorillaRun/2countdownGreen.png');
+}
+
+#countdown-3 {
+  background-image: url('../../images/runGorillaRun/3countdownGreen.png');
+}
+
+#countdown-go {
+  background-image: url('../../images/runGorillaRun/GO.png');
+}
