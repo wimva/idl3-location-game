@@ -285,14 +285,6 @@ function success(position) {
   }
 }
 
-/* TEST */
-setTimeout(() => {
-  navigateContent.className = 'banana-sonar-active';
-  bananaSonar.className = 'banana-sonar-phase-4';
-  startBananaFoundAnimation();
-}, 3000);
-/* /TEST */
-
 // error for GPS
 function error(err) {
   console.warn('ERROR(' + err.code + '): ' + err.message);
