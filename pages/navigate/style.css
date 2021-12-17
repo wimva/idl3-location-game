@@ -79,6 +79,7 @@ body {
   background-image: url('../../images/general/backgrounds/neutralBG.png');
   background-position: center;
   background-size: cover;
+  text-align: center;
 }
 
 #request-permissions button {
