@@ -1,0 +1,94 @@
+.speech {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.speech-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 0;
+  width: 100%;
+}
+
+.speech-01 .speech-text {
+  bottom: 29%;
+}
+
+.speech-02 .speech-text {
+  bottom: 65%;
+}
+
+.speech-03 .speech-text {
+  bottom: 28%;
+}
+
+.speech-04 .speech-text {
+  bottom: 40%;
+}
+
+.speech-05 .speech-text {
+  bottom: 40%;
+}
+
+.speech-character {
+  position: absolute;
+  height: auto;
+}
+
+.speech-01 .speech-character {
+  bottom: -38%;
+  width: 80%;
+  left: 10%;
+}
+
+.speech-02 .speech-character {
+  bottom: -30%;
+  width: 110%;
+  left: -5%;
+}
+
+.speech-03 .speech-character {
+  bottom: -38%;
+  width: 80%;
+  left: 10%;
+}
+
+.speech-04 .speech-character {
+  bottom: -35%;
+  width: 90%;
+  left: 5%;
+}
+
+.speech-05 .speech-character {
+  bottom: -35%;
+  width: 90%;
+  left: 5%;
+}
+
+.speech-button {
+  width: 80px;
+  display: block;
+  height: auto;
+  cursor: pointer;
+  bottom: 7%;
+  position: absolute;
+}
+.speech-button:active {
+  transform: rotate(-0.5deg) translateY(2px);
+}
+.speech-button-ok {
+  right: 8%;
+  transform: translateY(20px);
+}
+.speech-button-ok:active {
+  transform: rotate(-0.5deg) translateY(22px);
+}
+.speech-button-next {
+  right: 8%;
+}
+.speech-button-prev {
+  left: 8%;
+}

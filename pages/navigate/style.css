@@ -81,11 +81,6 @@ body {
   background-size: cover;
 }
 
-#request-permissions p {
-  font-size: 1.5rem;
-  text-align: center;
-}
-
 #request-permissions button {
   margin-top: 2rem;
 }

@@ -3,23 +3,26 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: 'Arvo', serif;
+  font-size: 1.5rem;
+  text-align: left;
 }
 
 .text-01 {
   background-image: url('../../images/general/text/textbal01.png');
-  width: 320px; /* TODO: to define */
-  height: 204px; /* TODO: to define */
-  padding: 0 2.5rem 1.25rem; /* TODO: to define */
+  width: 310px;
+  height: 503px;
+  padding: 0 2.5rem 1.25rem;
 }
 .text-01 p {
-  transform: rotate(1deg); /* TODO: to define */
+  transform: rotate(1deg);
 }
 
 .text-02 {
   background-image: url('../../images/general/text/textbal02.png');
   width: 320px;
   height: 204px;
-  padding: 0 2.5rem 1.25rem;
+  padding: 0 2rem 1.25rem 2.5rem;
 }
 .text-02 p {
   transform: rotate(1deg);
@@ -27,10 +30,30 @@
 
 .text-03 {
   background-image: url('../../images/general/text/textbal03.png');
-  width: 320px; /* TODO: to define */
-  height: 204px; /* TODO: to define */
-  padding: 0 2.5rem 1.25rem; /* TODO: to define */
+  width: 320px;
+  height: 529px;
+  padding: 0 2.5rem 1.25rem;
 }
 .text-03 p {
-  transform: rotate(1deg); /* TODO: to define */
+  transform: rotate(1deg);
+}
+
+.text-04 {
+  background-image: url('../../images/general/text/textbal04.png');
+  width: 320px;
+  height: 347px;
+  padding: 0 2.5rem 2rem 3.25rem;
+}
+.text-04 p {
+  transform: rotate(1.5deg);
+}
+
+.text-05 {
+  background-image: url('../../images/general/text/textbal05.png');
+  width: 320px;
+  height: 347px;
+  padding: 0 2.5rem 2rem 3.25rem;
+}
+.text-05 p {
+  transform: rotate(1.5deg);
 }

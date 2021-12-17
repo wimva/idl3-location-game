@@ -1,24 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-
     <meta charset="UTF-8" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link href="../../styles/reset.css" type="text/css" rel="stylesheet">
-    <link href="../../styles/variables.css" type="text/css" rel="stylesheet">
-    <link href="../../styles/general.css" type="text/css" rel="stylesheet">
-    <link href="../../styles/components/button.css" type="text/css" rel="stylesheet">
-    <link href="style.css" type="text/css" rel="stylesheet">
+    <link href="../../styles/reset.css" type="text/css" rel="stylesheet" />
+    <link href="../../styles/variables.css" type="text/css" rel="stylesheet" />
+    <link href="../../styles/general.css" type="text/css" rel="stylesheet" />
+    <link
+      href="../../styles/components/speech.css"
+      type="text/css"
+      rel="stylesheet"
+    />
+    <link
+      href="../../styles/components/text.css"
+      type="text/css"
+      rel="stylesheet"
+    />
+    <link
+      href="../../styles/components/button.css"
+      type="text/css"
+      rel="stylesheet"
+    />
+    <link href="style.css" type="text/css" rel="stylesheet" />
 
     <script defer src="script.js"></script>
-
   </head>
   <body>
-
-    <h1>Welkom! We starten aan de zoo van Antwerpen</h1>
-    <button id="start-button">Start</button>
-
+    <div class="speech speech-04" id="speech-1">
+      <div class="speech-text">
+        <div class="text text-04">
+          <p>
+            Gorilla Gust is ontsnapt uit De Zoo! Inwoners van Antwerpen: hou
+            ramen en deuren gesloten. Het dier is onvoorspelbaar en gevaarlijk.
+          </p>
+        </div>
+      </div>
+      <img
+        class="speech-character"
+        src="../../images/general/characters/jacques.png"
+      />
+      <img
+        class="speech-button speech-button-next"
+        src="../../images/general/arrowR.png"
+      />
+    </div>
+    <div class="speech speech-02" id="speech-2" style="display: none">
+      <div class="speech-text">
+        <div class="text text-02">
+          <p>
+            Mensen die mee kunnen helpen zoeken worden gevraagd om nu naar de
+            Zoo te komen.
+          </p>
+        </div>
+      </div>
+      <img
+        class="speech-character"
+        src="../../images/general/characters/jacques.png"
+      />
+      <img
+        class="speech-button speech-button-prev"
+        src="../../images/general/arrowL.png"
+      />
+      <img
+        class="speech-button speech-button-next"
+        src="../../images/general/arrowR.png"
+      />
+    </div>
+    <div class="speech speech-02" id="speech-3" style="display: none">
+      <div class="speech-text">
+        <div class="text text-02">
+          <p>Volg de pijl tot je bij de juiste locatie bij De Zoo bent.</p>
+        </div>
+      </div>
+      <img
+        class="speech-character"
+        src="../../images/general/characters/jacques.png"
+      />
+      <img
+        class="speech-button speech-button-prev"
+        src="../../images/general/arrowL.png"
+      />
+      <img
+        class="speech-button speech-button-ok"
+        src="../../images/general/okButton.png"
+      />
+    </div>
   </body>
 </html>
