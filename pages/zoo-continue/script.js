@@ -1,4 +1,4 @@
-const AMOUNT_OF_SPEECH = 5;
+const AMOUNT_OF_SPEECH = 3;
 
 function setVisibleSpeech(index) {
   document.querySelectorAll('.speech').forEach((el) => {
@@ -25,5 +25,11 @@ for (let index = 1; index <= AMOUNT_OF_SPEECH; index++) {
 }
 
 document.querySelector('.speech-button-ok').onclick = () => {
-  location.assign(`../zoo-game/index.html`);
+  const startCoordinates = '51.217509,4.422590';
+  const coordinates = '51.224358,4.412083';
+  const locationName = 'De Prof';
+  const nextPage = 'prof';
+  location.assign(
+    `../navigate/index.html?coordinates=${coordinates}&locationName=${locationName}&nextPage=${nextPage}&startCoordinates=${startCoordinates}`,
+  );
 };
