@@ -1,12 +1,77 @@
+html {
+  height: 100%;
+}
+
+body {
+  background-image: url('../../images/general/backgrounds/neutralBG.png');
+  background-position: center;
+  background-size: cover;
+  height: 100%;
+}
+
 .volume-meter {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.volume-meter-content {
+  display: flex;
+  align-items: center;
 }
 
 .volume-meter-bar {
-  background-color: var(--button-color);
-  width: 0.25rem;
-  height: 1rem;
-  border-radius: 0.125rem;
+  background-image: url('../../images/gorillaScream/audioBar.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 10px 71px;
+  width: 10px;
+  height: 71px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 5px;
   margin: 0.125rem;
-  transform-origin: 50% 50%;
+}
+
+#volume-success,
+#volume-failed,
+#countdown {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#volume-failed img {
+  animation: attention 500ms steps(1) infinite;
+}
+
+@keyframes attention {
+  0% {
+    transform: rotate(2deg);
+  }
+  20% {
+    transform: rotate(4deg);
+  }
+  40% {
+    transform: rotate(-4deg);
+  }
+  60% {
+    transform: rotate(0deg);
+  }
+  80% {
+    transform: rotate(-2deg);
+  }
+  100% {
+    transform: rotate(2deg);
+  }
 }
