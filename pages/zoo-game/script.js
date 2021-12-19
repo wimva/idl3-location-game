@@ -11,6 +11,9 @@ const audioVolumeArray = [5, 5, 5, 5, 5, 5, 5, 5, 5, 5];
 let now = new Date().getTime();
 let microphoneReady = false;
 let maxVolume = 0;
+let volumeThreshold = 50;
+let maxAttempts = 3;
+let attempts = 0;
 
 function microphoneSuccess(volume) {
   if (!microphoneReady) {
@@ -79,7 +82,11 @@ function startCountdown() {
     maxVolume = 0;
   }, 3000);
   setTimeout(() => {
-    if (maxVolume > 55) {
+    attempts += 1;
+    if (
+      (maxVolume > volumeThreshold && attempts > 1) ||
+      attempts >= maxAttempts
+    ) {
       volumeElement.style.display = 'none';
       successElement.style.display = 'flex';
       setTimeout(() => {
