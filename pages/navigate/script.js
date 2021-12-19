@@ -19,7 +19,7 @@ const bananaPositions = [
   { latitude: 51.218381, longitude: 4.412834 }, // Meir vs Jezusstraat
   { latitude: 51.217518, longitude: 4.418973 }, // Wasbar Keyserlei
   { latitude: 51.218115, longitude: 4.41921 }, // Breydelstraat vs Statiestraat
-  { latitude: 51.219287, longitude: 4.418324 }, // Rooseveltplaats
+  { latitude: 51.21929, longitude: 4.418484 }, // Rooseveltplaats
   { latitude: 51.220794, longitude: 4.41565 }, // Korte Winkelstraat
   { latitude: 51.219781, longitude: 4.415434 }, // Kipdorp
   { latitude: 51.219491, longitude: 4.412266 }, // Campus LNI
