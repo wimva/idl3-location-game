@@ -298,6 +298,7 @@ function success(position) {
 
 // error for GPS
 function error(err) {
+  debugElement.textContent = `ERROR ${err.code}: ${err.message}`;
   console.warn('ERROR(' + err.code + '): ' + err.message);
 }
 
@@ -309,6 +310,7 @@ function handleMessage(evt) {
 // check if page lives in the test iframe
 if (isInIframe()) {
   // listen to messages from test-iframe
+  debugElement.textContent = 'loaded in iframe';
   window.addEventListener('message', handleMessage, false);
   parent.postMessage({ message: 'navigate-init' }, '*');
   parent.postMessage(
