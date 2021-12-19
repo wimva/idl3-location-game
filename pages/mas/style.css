@@ -1,0 +1,77 @@
+html {
+    height: 100%;
+  }
+  
+  body {
+    background-image: url('../../images/general/backgrounds/neutralBG.png');
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+  }
+  #kodak {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:1;
+    background-color:#000;
+    display:none;
+  }
+  #puzzle {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:99;
+    background-color:#FFF;
+    display:none;
+  }
+  #canvas {
+    display:none;
+  }
+  #photoFrame {
+    position:absolute;
+    top:0;left:0;
+    width:100%;
+    height:auto;
+    z-index: 99;
+  }
+  #capture {
+    position:absolute;
+    top: calc((100vw / 810) * 920);
+    left:50%;
+    margin-left:-63px;
+    z-index:9999;
+  }
+  #video {
+    position:absolute;
+    left:50px;
+    top:50px;
+    /*width: calc(100 vw - 100px) !important;
+    height: calc((100 vw - 100px) * 1.6) !important;*/
+    width: calc(100% - 100px);
+  }
+  .jqPuzzle {
+    padding: 0px;
+    border: 0;
+    background-color: transparent;
+}
+.jqPuzzle .jqp-wrapper {
+    padding: 2px;
+    border: 0;
+    background-color: transparent;
+}
+#losetoep {
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:100%;
+    padding-bottom:30px;
+    text-align:center;
+    font-family: 'Arvo', serif;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    display:none;
+}

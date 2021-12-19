@@ -9,16 +9,97 @@
     <link href="../../styles/reset.css" type="text/css" rel="stylesheet">
     <link href="../../styles/variables.css" type="text/css" rel="stylesheet">
     <link href="../../styles/general.css" type="text/css" rel="stylesheet">
-    <link href="../../styles/components/button.css" type="text/css" rel="stylesheet">
-    <link href="style.css" type="text/css" rel="stylesheet">
+    <link
+    href="../../styles/components/speech.css"
+    type="text/css"
+    rel="stylesheet"
+  />
+  <link
+    href="../../styles/components/text.css"
+    type="text/css"
+    rel="stylesheet"
+  />
+    <link
+      href="../../styles/components/button.css"
+      type="text/css"
+      rel="stylesheet"
+    />
+    <link href="style.css" type="text/css" rel="stylesheet" />
 
+    <script defer src="../../scripts/camera.js"></script>
+    <script defer src="../../scripts/jquery-3.6.js"></script>
+    
     <script defer src="script.js"></script>
 
   </head>
   <body>
+    <div class="speech" id="newMessage">
+      <button style="position:absolute;display:block;margin-top:40px;left:50%;margin-left:-100px;">Message!</button><br>
+      <div class="speech-text" style="top:150px;">
+        <div class="text text-05">
+          <p>
+            Hello!<br><br>
+            <a id="attachment">click here to Download Attachment</a>
+          </p>
+        </div>
+      </div>
+    </div>
 
-    <h1>De Prof, audiofragment. Scan om te unlocken</h1>
-    <button id="continue-button">Ga verder</button>
+
+    <div id="locked">
+      <img src="../../images/photoSearch/lock.png" id="lock" />
+      <div id="unlock">
+        <button class="unlockButton">Encrypted</button><br>
+        <button class="unlockButton">Unlock Me</button>
+      </div>
+      <div class="distortion regularSpeed"></div>
+      <div class="distortion otherSpeed"></div>
+    </div>
+
+    <div class="speech" id="">
+      <video id="video" width="320" height="240" autoplay playsinline></video>
+      <img src="../../images/photoSearch/playButton.png" id="capture" style="display:none;" />
+      <canvas id="canvas" style="display:none;"></canvas>
+      <div id="gate15"><img src="../../images/photoSearch/gate15.png" /></div>
+
+      <div id="code">
+        <button class="unlockButton">Enter Code</button><br>
+        <input name="riddle" id="riddle" />
+        <img src="../../images/general/okButton.png" id="unlock-button" />
+      </div>
+    </div>
+
+    <div class="speech speech-04" id="sound">
+      <img
+        class="speech-character"
+        src="../../images/general/characters/dian.png"
+      />
+      <div class="speech-text">
+        <div class="text text-05">
+          
+            <p>File Unlocked!</p>
+            <div id="audioFile">
+            <audio controls>
+              <source src="../../sound/fossey-alois.mpeg" type="audio/mpeg">
+            Your browser does not support the audio element.
+            </audio>
+          </div>
+          
+        </div>
+        
+      </div>
+      
+        
+      
+      <img
+        class="speech-button speech-button-next"
+        src="../../images/general/arrowR.png"
+        id="continue-button"
+      />
+    </div>
+
+    
+
 
   </body>
 </html>

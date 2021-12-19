@@ -10,15 +10,59 @@
     <link href="../../styles/variables.css" type="text/css" rel="stylesheet">
     <link href="../../styles/general.css" type="text/css" rel="stylesheet">
     <link href="../../styles/components/button.css" type="text/css" rel="stylesheet">
+    <link href="../../styles/components/jquery.jqpuzzle.css" type="text/css" rel="stylesheet">
+    <link
+      href="../../styles/components/speech.css"
+      type="text/css"
+      rel="stylesheet"
+    />
+    <link
+      href="../../styles/components/text.css"
+      type="text/css"
+      rel="stylesheet"
+    />
+
     <link href="style.css" type="text/css" rel="stylesheet">
 
+    <script defer src="../../scripts/jquery.js"></script>
+    <script defer src="../../scripts/jquery.jqpuzzle.min.js"></script>
+    <script defer src="../../scripts/camera.js"></script>
     <script defer src="script.js"></script>
 
   </head>
   <body>
+    
+    <div class="speech speech-04" id="speech-1">
+      <img
+        class="speech-character"
+        src="../../images/general/characters/jacques.png"
+      />
+      <div class="speech-text">
+        <div class="text text-04">
+          <p>
+            Aloïs - Gust is gespot op het MAS.<br>
+            Kan jij ons een foto van het MAS bezorgen ter bevestiging?
+          </p>
+        </div>
+      </div>
+      <img
+        class="speech-button speech-button-next"
+        src="../../images/general/arrowR.png"
+        id="gotoCamera"
+      />
+    </div>
 
-    <h1>Te laat! Ajaj!</h1>
-    <button id="continue-button">Ga verder</button>
+    <div id="kodak">
+      <video id="video"  autoplay playsinline></video>
+      <img src="../../images/masScramble/photoFrame.png" id="photoFrame" />
+      <img src="../../images/masScramble/photoButton.png" id="capture" />
+    </div>
+    
+    <div id="puzzle">
+      <canvas id="canvas"></canvas>
+      <img src="" id="shuffledImage" />
+      <div id="losetoep">Los de puzzle op<br>om verder te gaan!</div>
+    </div>
 
   </body>
 </html>

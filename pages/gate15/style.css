@@ -1,0 +1,10 @@
+html {
+    height: 100%;
+  }
+  
+  body {
+    background-image: url('../../images/general/backgrounds/neutralBG.png');
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+  }
