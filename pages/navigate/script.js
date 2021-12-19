@@ -298,6 +298,9 @@ function success(position) {
 
 // error for GPS
 function error(err) {
+  alert(
+    'Please allow location services: There are three places to check for permissions and enable geolocation for your: 1) Settings > Privacy > Location Services. 2) Settings > Safari > Location. 3) Settings > General > Reset > Reset Location Warnings',
+  );
   debugElement.textContent = `ERROR ${err.code}: ${err.message}`;
   console.warn('ERROR(' + err.code + '): ' + err.message);
 }
