@@ -9,6 +9,11 @@ const bananaCollectionTotal = document.querySelector(
 );
 const navigateContent = document.querySelector('#navigate-content');
 const bananaSonar = document.querySelector('#banana-sonar');
+const debugElement = document.querySelector('#debug');
+
+// debug
+const debug = localStorage.getItem('debug');
+if (debug === 'true') debugElement.style.display = 'block';
 
 // definieer radius waarbinnen doelen gevonden mogen worden
 const successRadiusInMeter = 20;
@@ -167,7 +172,10 @@ function calculateTotalDistance() {
 calculateTotalDistance();
 
 // deze functie wordt opgeroepen elke keer een nieuwe locatie doorkomt
+debugElement.textContent = 'no GPS found';
 function success(position) {
+  debugElement.textContent =
+    'GPS found: ' + position.coords.latitude + ',' + position.coords.longitude;
   mapCenter = [position.coords.longitude, position.coords.latitude];
 
   // als startLocatie niet gekend is, sla die coordinaten dan zo op
@@ -190,7 +198,9 @@ function success(position) {
       16,
       'mapbox://styles/vaw-be-ap/ckx5zf9v40neq15rryvwq6pa6',
     );
+    debugElement.textContent = `create map ${position.coords.latitude},${position.coords.longitude}`;
     map.on('load', () => {
+      debugElement.textContent = `map loaded ${position.coords.latitude},${position.coords.longitude}`;
       document.querySelector('body').style.backgroundImage =
         "url('../../images/general/backgrounds/orangeBG.png')";
       document.querySelector('#map').style.opacity = 0.9;
@@ -200,6 +210,7 @@ function success(position) {
 
     // fly to current position
   } else {
+    debugElement.textContent = `map change ${position.coords.latitude},${position.coords.longitude}`;
     onMapChange();
   }
 

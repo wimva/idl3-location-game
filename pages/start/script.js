@@ -1,3 +1,19 @@
+// debug
+const debug = getQueryParam('debug');
+if (debug === 'true') {
+  localStorage.setItem('debug', 'true');
+} else {
+  localStorage.setItem('debug', 'false');
+}
+
+// empty local storage
+localStorage.removeItem('nextPage');
+localStorage.removeItem('coordinates');
+localStorage.removeItem('startCoordinates');
+localStorage.removeItem('locationName');
+localStorage.removeItem('bananaFound');
+
+// speech
 const AMOUNT_OF_SPEECH = 3;
 
 function setVisibleSpeech(index) {
