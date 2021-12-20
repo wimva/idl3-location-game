@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="../../styles/reset.css" type="text/css" rel="stylesheet">
+    <link href="../../styles/variables.css" type="text/css" rel="stylesheet">
+    <link href="../../styles/general.css" type="text/css" rel="stylesheet">
+    <link
+      href="../../styles/components/speech.css"
+      type="text/css"
+      rel="stylesheet"
+    />
+    <link
+      href="../../styles/components/text.css"
+      type="text/css"
+      rel="stylesheet"
+    />
+    <link
+      href="../../styles/components/button.css"
+      type="text/css"
+      rel="stylesheet"
+    />
+    <link href="style.css" type="text/css" rel="stylesheet" />
+    <script defer src="../../scripts/jquery-3.6.js"></script>
+    <script defer src="script.js"></script>
+
+  </head>
+  <body>
+    <div class="speech BGimage kooi" id="speech-1">
+      <div class="speech-text">
+        <div class="text text-04">
+          <p>
+            We moeten gust in de kooi lokken! Heb je genoeg bananen?
+          </p>
+        </div>
+      </div>
+      <img
+        class="speech-button speech-button-next"
+        src="../../images/general/arrowR.png"
+      />
+    </div>
+
+    <div class="speech BGimage kooibanaan" id="speech-2" style="display:none;">  
+      <img
+        class="check"
+        src="../../images/bananaSonar/check.png"
+      />
+      <img
+        class="speech-button speech-button-prev"
+        src="../../images/general/arrowL.png"
+      />
+      <img
+        class="speech-button speech-button-next"
+        src="../../images/general/arrowR.png"
+      />
+    </div>
+
+    <div class="speech BGimage boat" id="speech-3" style="display:none;">  
+      <div id="audioFile">
+        <audio controls id="cargo">
+          <source src="../../sound/cargo.m4a" type="audio/mpeg">
+        Your browser does not support the audio element.
+        </audio>
+      </div>
+      <!--
+      <img
+        class="speech-button speech-button-prev"
+        src="../../images/general/arrowL.png"
+      />
+      <img
+        class="speech-button speech-button-next"
+        src="../../images/general/arrowR.png"
+      />-->
+    </div>
+    <div id="fin">
+      <div id="insideFIN">
+        F I N
+      </div>
+    </div>
+
+    
+    
+
+  </body>
+</html>

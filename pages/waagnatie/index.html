@@ -9,15 +9,183 @@
     <link href="../../styles/reset.css" type="text/css" rel="stylesheet">
     <link href="../../styles/variables.css" type="text/css" rel="stylesheet">
     <link href="../../styles/general.css" type="text/css" rel="stylesheet">
-    <link href="../../styles/components/button.css" type="text/css" rel="stylesheet">
-    <link href="style.css" type="text/css" rel="stylesheet">
-
+    <link
+      href="../../styles/components/speech.css"
+      type="text/css"
+      rel="stylesheet"
+    />
+    <link
+      href="../../styles/components/text.css"
+      type="text/css"
+      rel="stylesheet"
+    />
+    <link
+      href="../../styles/components/button.css"
+      type="text/css"
+      rel="stylesheet"
+    />
+    <link href="style.css" type="text/css" rel="stylesheet" />
+    <script defer src="../../scripts/jquery-3.6.js"></script>
     <script defer src="script.js"></script>
 
   </head>
   <body>
+    <div class="speech BGimage gust" id="speech-1">
+      <!--<div class="speech-text">
+        <div class="text text-04">
+          <p>
+            loremsss
+          </p>
+        </div>
+      </div>-->
+      <img
+        class="speech-button speech-button-next"
+        src="../../images/general/arrowR.png"
+      />
+    </div>
 
-    <h1>Endgame!</h1>
+    <div class="speech speech-04" id="speech-2" style="display: none">
+      <img
+        class="speech-character"
+        src="../../images/general/characters/alois.png"
+      />
+      <div class="speech-text">
+        <div class="text text-04">
+          <p>
+            Heel goed bent aan RSL, we moeten enkel Gust nog op de boot krijgen naar Congo. 
+            Goed dat je al die bananen mee hebt want die hebben we nodig.  
+    
+          </p>
+        </div>
+      </div>
+      <img
+        class="speech-button speech-button-prev"
+        src="../../images/general/arrowL.png"
+      />
+      <img
+        class="speech-button speech-button-next"
+        src="../../images/general/arrowR.png"
+      />
+    </div>
+
+    <div class="speech speech-04" id="speech-3" style="display: none">
+      <img
+        class="speech-character"
+        src="../../images/general/characters/alois.png"
+      />
+      <div class="speech-text">
+        <div class="text text-04">
+          <p>
+            Maar kan je ons eerst helpen met het zoeken naar de code om de kraan te besturen?  
+            <br>Hier zijn enkele hints!!!  
+          </p>
+        </div>
+      </div>
+      <img
+        class="speech-button speech-button-prev"
+        src="../../images/general/arrowL.png"
+      />
+      <img
+        class="speech-button speech-button-next"
+        src="../../images/general/arrowR.png"
+      />
+    </div>
+
+    <div class="speech speech-04" id="speech-4" style="display: none">
+      <img
+        class="speech-character"
+        src="../../images/general/characters/alois.png"
+      />
+      <div class="speech-text">
+        <div class="text text-04">
+          <p>
+            - de huisnummer van Red Star Line<br>
+            - de eerste letter van het standbeeld van de vogel<br>
+            - 3x3<br>
+            - de laatste letter van de onduidelijke buur van Red Star Line.<br>
+          </p>
+        </div>
+      </div>
+      <img
+        class="speech-button speech-button-prev"
+        src="../../images/general/arrowL.png"
+      />
+      <img
+        class="speech-button speech-button-next"
+        src="../../images/general/arrowR.png"
+      />
+    </div>
+
+    <div class="speech speech-02" id="speech-5" style="display: none">
+      <div class="speech-text">
+        <div class="text text-04">
+          <p>
+            - de huisnummer van Red Star Line<br>
+            - de eerste letter van het standbeeld van de vogel<br>
+            - 3x3<br>
+            - de laatste letter van de onduidelijke buur van Red Star Line.<br>
+          </p>
+        </div>
+      </div>
+      <div id="code">
+        <button class="unlockButton">Enter Code</button><br>
+        <input name="riddle" id="riddle" />
+        <img src="../../images/general/okButton.png" id="ok-button" />
+      </div>
+      <img
+        class="speech-button speech-button-prev"
+        src="../../images/general/arrowL.png"
+      />
+      <!--
+      <img
+        class="speech-button speech-button-next"
+        src="../../images/general/arrowR.png"
+      />-->
+
+    </div>
+    
+    <div class="speech BGimage kraan" id="speech-6" style="display:none">
+      <!--<div class="speech-text">
+        <div class="text text-04">
+          <p>
+            loremsss
+          </p>
+        </div>
+      </div>-->
+      <img
+        class="speech-button speech-button-prev"
+        src="../../images/general/arrowL.png"
+      />
+      <img
+        class="speech-button speech-button-next "
+        src="../../images/general/arrowR.png"
+      />
+    </div>
+
+    <div class="speech speech-02" id="speech-7" style="display: none">
+      <img
+        class="speech-character"
+        src="../../images/general/characters/alois.png"
+      />
+      <div class="speech-text">
+        <div class="text text-04">
+          <p>
+            YESS!! Nu enkel nog de bananen droppen aan de kaai in de Sluisstraat. Ik heb je de coordinaten ineens doorgestuurd.
+          </p>
+        </div>
+      </div>
+      <img
+        class="speech-button speech-button-prev"
+        src="../../images/general/arrowL.png"
+      />
+      <img
+        class="speech-button speech-button-next continue-button"
+        src="../../images/general/arrowR.png"
+      />
+    </div>
+
+    
+
 
   </body>
 </html>
