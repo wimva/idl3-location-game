@@ -24,6 +24,7 @@ for (let index = 1; index <= AMOUNT_OF_SPEECH; index++) {
       if(index>=2) {
         audioPlayer.play();
         $('#fin').delay(5500).fadeIn(4000);
+        localStorage.clear();
       }
     };
   }
