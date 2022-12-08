@@ -143,14 +143,17 @@ body {
   width: 80px;
   margin-right: 1.5rem;
 }
+
 .banana-sonar-phase-2 .banana-sonar-banana {
   width: 100px;
   margin-right: 2rem;
 }
+
 .banana-sonar-phase-3 .banana-sonar-banana {
   width: 160px;
   margin-right: 3rem;
 }
+
 .banana-sonar-phase-4 .banana-sonar-banana {
   width: 160px;
   margin-right: 3rem;
@@ -164,15 +167,19 @@ body {
   background: url('../../images/bananaSonar/sonarSprite.png');
   background-size: 1920px 320px;
 }
+
 .banana-sonar-phase-1 .banana-sonar-background {
   animation: attention 2000ms steps(1) infinite, sonar1 1000ms steps(3) infinite;
 }
+
 .banana-sonar-phase-2 .banana-sonar-background {
   animation: attention 1000ms steps(1) infinite, sonar2 1000ms steps(3) infinite;
 }
+
 .banana-sonar-phase-3 .banana-sonar-background {
   animation: attention 500ms steps(1) infinite, sonar3 750ms steps(3) infinite;
 }
+
 .banana-sonar-phase-4 .banana-sonar-background {
   display: none;
 }
@@ -183,24 +190,45 @@ body {
   background-position: center;
   background-size: cover;
 }
+
 .banana-sonar-phase-4 .banana-sonar-full-background {
   display: flex;
   transition: all 500ms ease-in-out;
 }
+
 .banana-sonar-check {
   width: 180px;
   height: 180px;
   display: none;
 }
+
 .banana-sonar-phase-4 .banana-sonar-check {
   display: flex;
   transition: all 500ms ease-in-out;
+}
+
+.banana-sonar-container {
+  transition: all 500ms ease-in-out;
+}
+
+.banana-sonar-ok {
+  position: relative;
+  top: 180px;
+  opacity: 0;
+  transition: all 500ms ease-in-out;
+  pointer-events: none;
+}
+
+.banana-sonar-phase-4 .banana-sonar-ok {
+  pointer-events: all;
+  opacity: 1;
 }
 
 @keyframes sonar1 {
   from {
     background-position: 0px;
   }
+
   to {
     background-position: -960px;
   }
@@ -210,6 +238,7 @@ body {
   from {
     background-position: -320px;
   }
+
   to {
     background-position: -1280px;
   }
@@ -219,6 +248,7 @@ body {
   from {
     background-position: -960px;
   }
+
   to {
     background-position: -1920px;
   }
@@ -228,18 +258,23 @@ body {
   0% {
     transform: rotate(2deg);
   }
+
   20% {
     transform: rotate(4deg);
   }
+
   40% {
     transform: rotate(-4deg);
   }
+
   60% {
     transform: rotate(0deg);
   }
+
   80% {
     transform: rotate(-2deg);
   }
+
   100% {
     transform: rotate(2deg);
   }
@@ -251,11 +286,15 @@ body {
   position: absolute;
   left: 50%;
   transform: translateX(-100px);
-  width: 200px;
+  width: 150px;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0.5rem;
+  background-image: url(../../images/bananaSonar/bananaCollectionBackground.png);
+  background-repeat: no-repeat;
+  background-size: 130px 50px;
+  background-position: right center;
 }
 
 .banana-collection-icon {

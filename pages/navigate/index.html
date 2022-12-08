@@ -1,115 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link href="../../styles/reset.css" type="text/css" rel="stylesheet" />
-    <link href="../../styles/variables.css" type="text/css" rel="stylesheet" />
-    <link href="../../styles/general.css" type="text/css" rel="stylesheet" />
-    <link
-      href="../../styles/components/text.css"
-      type="text/css"
-      rel="stylesheet"
-    />
-    <link
-      href="../../styles/components/button.css"
-      type="text/css"
-      rel="stylesheet"
-    />
-    <link
-      href="../../styles/components/loader.css"
-      type="text/css"
-      rel="stylesheet"
-    />
-    <link href="style.css" type="text/css" rel="stylesheet" />
-    <link
-      href="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <script src="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js"></script>
-    <script defer src="../../scripts/secrets.js"></script>
-    <script defer src="../../scripts/get-distance.js"></script>
-    <script defer src="../../scripts/maps.js"></script>
-    <script defer src="../../scripts/point-to-location.js"></script>
-    <script defer src="../../scripts/get-query-param.js"></script>
-    <script defer src="../../scripts/is-in-iframe.js"></script>
-    <script defer src="script.js"></script>
-  </head>
-  <body>
-    <div id="map"></div>
+  <link href="../../styles/reset.css" type="text/css" rel="stylesheet" />
+  <link href="../../styles/variables.css" type="text/css" rel="stylesheet" />
+  <link href="../../styles/general.css" type="text/css" rel="stylesheet" />
+  <link href="../../styles/components/text.css" type="text/css" rel="stylesheet" />
+  <link href="../../styles/components/button.css" type="text/css" rel="stylesheet" />
+  <link href="../../styles/components/loader.css" type="text/css" rel="stylesheet" />
+  <link href="style.css" type="text/css" rel="stylesheet" />
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css" rel="stylesheet" />
 
-    <div id="navigate-content">
-      <div class="point-to-location">
-        <img
-          src="../../images/bananaSonar/arrow.png"
-          alt="volg mij"
-          id="point-to-location"
-        />
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js"></script>
+  <script defer src="../../scripts/secrets.js"></script>
+  <script defer src="../../scripts/get-distance.js"></script>
+  <script defer src="../../scripts/maps.js"></script>
+  <script defer src="../../scripts/point-to-location.js"></script>
+  <script defer src="../../scripts/get-query-param.js"></script>
+  <script defer src="../../scripts/is-in-iframe.js"></script>
+  <script defer src="script.js"></script>
+</head>
+
+<body>
+  <div id="map"></div>
+
+  <div id="navigate-content">
+    <div class="point-to-location">
+      <img src="../../images/bananaSonar/arrow.png" alt="volg mij" id="point-to-location" />
+    </div>
+
+    <div class="progress-container">
+      <img class="progress-background" src="../../images/bananaSonar/loaderBarEmpty.png" />
+      <div id="progress" class="progress-foreground"></div>
+    </div>
+
+    <div id="banana-sonar" class="banana-sonar-phase-0">
+      <div class="banana-sonar">
+        <div class="banana-sonar-background"></div>
       </div>
-
-      <div class="progress-container">
-        <img
-          class="progress-background"
-          src="../../images/bananaSonar/loaderBarEmpty.png"
-        />
-        <div id="progress" class="progress-foreground"></div>
-      </div>
-
-      <div id="banana-sonar" class="banana-sonar-phase-0">
-        <div class="banana-sonar">
-          <div class="banana-sonar-background"></div>
-        </div>
-        <div class="banana-sonar banana-sonar-full-background"></div>
-        <div class="banana-sonar">
-          <img
-            class="banana-sonar-banana"
-            src="../../images/bananaSonar/banana.png"
-          />
-        </div>
-        <div class="banana-sonar">
-          <img
-            class="banana-sonar-check"
-            src="../../images/bananaSonar/check.png"
-          />
+      <div class="banana-sonar banana-sonar-full-background"></div>
+      <div class="banana-sonar banana-sonar-container">
+        <div id="banana-sonar-point-to-location">
+          <img class="banana-sonar-banana" src="../../images/bananaSonar/banana.png" />
         </div>
       </div>
-
-      <div class="banana-collection" id="banana-collection">
-        <img
-          class="banana-collection-icon"
-          src="../../images/bananaSonar/bananaButton.png"
-        />
-        <span
-          class="banana-collection-text"
-          id="banana-collection-collected"
-        ></span>
-        <span class="banana-collection-text">/</span>
-        <span
-          class="banana-collection-text"
-          id="banana-collection-total"
-        ></span>
+      <div class="banana-sonar">
+        <img class="banana-sonar-check" src="../../images/bananaSonar/check.png" />
+      </div>
+      <div class="banana-sonar">
+        <button class="banana-sonar-ok">Verder</button>
       </div>
     </div>
 
-    <div id="loading-container">
-      <div class="loading-content">
-        <img src="../../images/general/logo.png" width="75" height="auto" />
-        <div class="loader"></div>
-      </div>
+    <div class="banana-collection" id="banana-collection">
+      <img class="banana-collection-icon" src="../../images/bananaSonar/bananaButton.png" />
+      <span class="banana-collection-text" id="banana-collection-collected"></span>
+      <span class="banana-collection-text">/</span>
+      <span class="banana-collection-text" id="banana-collection-total"></span>
     </div>
+  </div>
 
-    <div id="request-permissions">
-      <div class="text text-02">
-        <p>
-          Mogen we je kompas gebruiken om je naar de juiste locatie te gidsen?
-        </p>
-      </div>
-      <button id="request-permissions-button">Akkoord</button>
+  <div id="loading-container">
+    <div class="loading-content">
+      <img src="../../images/general/logo.png" width="75" height="auto" />
+      <div class="loader"></div>
     </div>
+  </div>
 
-    <div id="debug"></div>
-  </body>
+  <div id="request-permissions">
+    <div class="text text-02">
+      <p>
+        Mogen we je kompas gebruiken om je naar de juiste locatie te gidsen?
+      </p>
+    </div>
+    <button id="request-permissions-button">Akkoord</button>
+  </div>
+
+  <div id="debug"></div>
+</body>
+
 </html>

@@ -9,6 +9,7 @@ const bananaCollectionTotal = document.querySelector(
 );
 const navigateContent = document.querySelector('#navigate-content');
 const bananaSonar = document.querySelector('#banana-sonar');
+const sonarOkButton = document.querySelector('.banana-sonar-ok');
 const debugElement = document.querySelector('#debug');
 
 // debug
@@ -60,35 +61,46 @@ bananaCollectionTotal.textContent = bananaMax;
 function startBananaFoundAnimation() {
   bananaFoundAnimationInProgress = true;
   const sonarBanana = document.querySelector('.banana-sonar-banana');
+
+  bananaCollection.style.display = 'none';
+  
+  setTimeout(() => {
+    sonarBanana.style.transform = `translateY(-30px) scale(1.5, 1.5)`;
+  }, 200);
+}
+
+function hideBananaFoundAnimation() {
+  const sonarBananaContainer = document.querySelector('.banana-sonar-container');
+  const sonarBanana = document.querySelector('.banana-sonar-banana');
   const sonarCheck = document.querySelector('.banana-sonar-check');
   const sonarBackground = document.querySelector(
     '.banana-sonar-full-background',
   );
-  setTimeout(() => {
-    sonarBanana.style.transform = `translateY(-30px) scale(1.5, 1.5)`;
-  }, 200);
-  setTimeout(() => {
-    sonarBanana.style.transform = `translateY(300px) scale(0.75, 0.75)`;
-    sonarBanana.style.opacity = 0;
-    sonarCheck.style.transform = `rotate(45deg) scale(0.25, 0.25)`;
-    sonarCheck.style.opacity = 0;
-    sonarBackground.style.opacity = 0;
-  }, 1000);
+
+  sonarBananaContainer.style.transform = `translateY(300px) scale(0.75, 0.75)`;
+  sonarBanana.style.opacity = 0;
+  sonarCheck.style.transform = `rotate(45deg) scale(0.25, 0.25)`;
+  sonarCheck.style.opacity = 0;
+  sonarBackground.style.opacity = 0;
   setTimeout(() => {
     bananaFoundAnimationInProgress = false;
     navigateContent.className = '';
     bananaSonar.className = 'banana-sonar-phase-0';
     bananaCollectionCollected.textContent = bananaFound.length;
-  }, 2000);
+  }, 1000);
   setTimeout(() => {
     // reset
+    sonarBananaContainer.style.transform = ``;
     sonarBanana.style.transform = ``;
     sonarBanana.style.opacity = 1;
     sonarCheck.style.transform = ``;
     sonarCheck.style.opacity = 1;
     sonarBackground.style.opacity = 1;
-  }, 2100);
+    bananaCollection.style.display = 'flex';
+  }, 1100);
 }
+
+sonarOkButton.onclick = hideBananaFoundAnimation;
 
 // haal alle query parameters op
 const locationName = getQueryParam('locationName');
@@ -253,6 +265,7 @@ function success(position) {
   // banana detector
   let bananaPhase = 0;
   let bananaFoundIndex = 0;
+  let bananaCurrent = null;
   if (bananaFound.length < bananaMax && nextPage !== 'zoo') {
     bananaPositions.forEach((banana, index) => {
       if (bananaFound.indexOf(index) == -1) {
@@ -265,12 +278,16 @@ function success(position) {
         if (bananaDistance <= bananaPhase4 + position.coords.accuracy) {
           bananaPhase = 4;
           bananaFoundIndex = index;
+          bananaCurrent = banana;
         } else if (bananaDistance <= bananaPhase3 + position.coords.accuracy) {
           bananaPhase = 3;
+          bananaCurrent = banana;
         } else if (bananaDistance <= bananaPhase2 + position.coords.accuracy) {
           bananaPhase = 2;
+          bananaCurrent = banana;
         } else if (bananaDistance <= bananaPhase1 + position.coords.accuracy) {
           bananaPhase = 1;
+          bananaCurrent = banana;
         }
       }
     });
@@ -282,6 +299,16 @@ function success(position) {
   if (!bananaFoundAnimationInProgress) {
     if (bananaPhase) {
       navigateContent.className = 'banana-sonar-active';
+      pointToLocation(
+        position.coords.latitude,
+        position.coords.longitude,
+        bananaCurrent.latitude,
+        bananaCurrent.longitude,
+        '#banana-sonar-point-to-location',
+        '#request-permissions-button',
+        onShowRequestPermissions,
+        onHideRequestPermissions,
+      );
     } else {
       navigateContent.className = '';
     }
