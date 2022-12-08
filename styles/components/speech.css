@@ -36,6 +36,9 @@
 .speech-character {
   position: absolute;
   height: auto;
+  max-height: 100vh;
+  object-fit: contain;
+  object-position: bottom;
 }
 
 .speech-01 .speech-character {
@@ -77,19 +80,24 @@
   position: absolute;
   user-select: none;
 }
+
 .speech-button:active {
   transform: rotate(-0.5deg) translateY(2px);
 }
+
 .speech-button-ok {
   right: 8%;
   transform: translateY(20px);
 }
+
 .speech-button-ok:active {
   transform: rotate(-0.5deg) translateY(22px);
 }
+
 .speech-button-next {
   right: 8%;
 }
+
 .speech-button-prev {
   left: 8%;
 }
