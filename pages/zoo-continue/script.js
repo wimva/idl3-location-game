@@ -26,7 +26,7 @@ for (let index = 1; index <= AMOUNT_OF_SPEECH; index++) {
 
 document.querySelector('.speech-button-ok').onclick = () => {
   const startCoordinates = '51.217509,4.422590';
-  const coordinates = '51.224358,4.412083';
+  const coordinates = '51.224205,4.412058';
   const locationName = 'De Prof';
   const nextPage = 'prof';
   location.assign(
