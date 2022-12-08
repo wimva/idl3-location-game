@@ -245,7 +245,7 @@ function success(position) {
   );
 
   // de afstand tussen mijn locatie en die van mijn doel is minder dan 20 meter?
-  if (distance < successRadiusInMeter) {
+  if (distance < successRadiusInMeter + position.coords.accuracy) {
     // navigeer naar de pagina die getoond moet worden als ik in 20 meter van locatie ben
     location.assign(`../${nextPage}/index.html`);
   }
@@ -262,14 +262,14 @@ function success(position) {
           banana.latitude,
           banana.longitude,
         ).distance;
-        if (bananaDistance <= bananaPhase4) {
+        if (bananaDistance <= bananaPhase4 + position.coords.accuracy) {
           bananaPhase = 4;
           bananaFoundIndex = index;
-        } else if (bananaDistance <= bananaPhase3) {
+        } else if (bananaDistance <= bananaPhase3 + position.coords.accuracy) {
           bananaPhase = 3;
-        } else if (bananaDistance <= bananaPhase2) {
+        } else if (bananaDistance <= bananaPhase2 + position.coords.accuracy) {
           bananaPhase = 2;
-        } else if (bananaDistance <= bananaPhase1) {
+        } else if (bananaDistance <= bananaPhase1 + position.coords.accuracy) {
           bananaPhase = 1;
         }
       }
@@ -307,7 +307,7 @@ function error(err) {
 
 // get map gps positions from iFrame
 function handleMessage(evt) {
-  success({ coords: { latitude: evt.data.lat, longitude: evt.data.lng } });
+  success({ coords: { latitude: evt.data.lat, longitude: evt.data.lng, accuracy: 10 } });
 }
 
 // check if page lives in the test iframe
