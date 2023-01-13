@@ -257,7 +257,7 @@ function success(position) {
   );
 
   // de afstand tussen mijn locatie en die van mijn doel is minder dan 20 meter?
-  if (distance < successRadiusInMeter + position.coords.accuracy) {
+  if (distance < successRadiusInMeter + Math.min(position.coords.accuracy/2, successRadiusInMeter)) {
     // navigeer naar de pagina die getoond moet worden als ik in 20 meter van locatie ben
     location.assign(`../${nextPage}/index.html`);
   }
@@ -275,17 +275,17 @@ function success(position) {
           banana.latitude,
           banana.longitude,
         ).distance;
-        if (bananaDistance <= bananaPhase4 + position.coords.accuracy) {
+        if (bananaDistance <= bananaPhase4 + Math.min(position.coords.accuracy/2, successRadiusInMeter)) {
           bananaPhase = 4;
           bananaFoundIndex = index;
           bananaCurrent = banana;
-        } else if (bananaDistance <= bananaPhase3 + position.coords.accuracy) {
+        } else if (bananaDistance <= bananaPhase3 + Math.min(position.coords.accuracy/2, successRadiusInMeter)) {
           bananaPhase = 3;
           bananaCurrent = banana;
-        } else if (bananaDistance <= bananaPhase2 + position.coords.accuracy) {
+        } else if (bananaDistance <= bananaPhase2 + Math.min(position.coords.accuracy/2, successRadiusInMeter)) {
           bananaPhase = 2;
           bananaCurrent = banana;
-        } else if (bananaDistance <= bananaPhase1 + position.coords.accuracy) {
+        } else if (bananaDistance <= bananaPhase1 + Math.min(position.coords.accuracy/2, successRadiusInMeter)) {
           bananaPhase = 1;
           bananaCurrent = banana;
         }
