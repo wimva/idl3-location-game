@@ -51,7 +51,16 @@ html {
    /* animation: slide 20s linear infinite;
     -webkit-animation: slide 20s linear infinite;*/
   }
-
+ul {
+  font-family: 'Arvo', serif;
+    font-size: 1.5rem;
+    text-align: left;
+    list-style:disc;
+    padding-left:10px;
+}
+li {
+  padding-bottom:20px;
+}
 
   @keyframes slide {
     from { background-position: center 0; }
