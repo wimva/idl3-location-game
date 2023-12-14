@@ -63,11 +63,12 @@ ul {
   font-size: 1.5rem;
   text-align: left;
   list-style: disc;
-  padding-left: 10px;
+  padding-left: 15px;
+  padding-right: 10px;
 }
 
 li {
-  padding-bottom: 20px;
+  padding-bottom: 5px;
 }
 
 @keyframes slide {
