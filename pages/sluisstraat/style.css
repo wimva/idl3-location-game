@@ -45,6 +45,14 @@ html {
   z-index:999999;
   display:none;
 }
+.bauer {
+  position:absolute;
+  right:20px;
+  bottom:20px;
+  font-family: 'Arvo', serif;
+  color:#FFF;
+  font-size:11px;
+}
 #insideFIN {
   position:absolute;
   left:0;

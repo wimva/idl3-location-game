@@ -26,7 +26,7 @@ for (let index = 1; index <= AMOUNT_OF_SPEECH; index++) {
 
 document.querySelector(`#ok-button`).onclick = () => {
     let secretCode = $(`#riddle`).val().toLowerCase();
-    if(secretCode==="3a9g") {
+    if(secretCode==="2wm17" || secretCode==="2bm17") {
         setVisibleSpeech(6);
     } else {
         alert("VERKEERDE CODE!\nProbeer opnieuw");
